@@ -1,14 +1,39 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Juniors</title>
-  <%= stylesheet_link_tag :all %>
-  <%= javascript_include_tag :defaults %>
+  <title>Lakeville junior volleyball</title>
+  <%= stylesheet_link_tag 'blueprint/screen', :media => 'screen' %>
+  <%= stylesheet_link_tag 'blueprint/print',  :media => 'print' %>
+  <%= stylesheet_link_tag 'style',  :media => 'screen' %>
+  <!--[if IE]><link rel="stylesheet" href="blueprint/ie.css" type="text/css" media="screen, projection" /><![endif]-->  
+  <%= javascript_include_tag 'jquery.min', 'rails' %>
   <%= csrf_meta_tag %>
 </head>
-<body>
-
-<%= yield %>
-
+<body class="<%= "#{controller.controller_name} #{controller.action_name}" %>">
+  <div class="container">
+    <div id="header" class="span-24 last">header</div>
+    <div id="navigation" class="span-24	 last">navigation</div>
+		<div id="content" class="span-16">
+			content
+		  <%= yield %>
+		</div>
+		<div id="aside" class="span-8 last">
+		  links
+		  <ul>
+		    <li><a href="http://www.lakevillenorthjuniors.com/">Lakeville North Juniors</a></li>
+		    <li><a href="http://www.lakevillesouthjuniors.com/">Lakeville South Juniors</a></li>
+		    <li><a href="http://www.ncrusav.org/">North Country - USA Volleyball</a></li>
+		  </ul>
+ 
+		  <%#= render :partial => "layouts/aside_links" %>
+ 
+		  Get some volleyball stuff!
+		</div>
+		<div id="footer" class="span-24 last">footer</div>
+  </div>
+  <% if Rails.env.development? %>
+    <div class="span-24"><%= debug(params) %></div>
+    <div class="span-24"><%= debug(session) %></div>
+  <% end %>
 </body>
 </html>
