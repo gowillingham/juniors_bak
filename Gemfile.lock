@@ -127,6 +127,7 @@ DEPENDENCIES
   factory_girl_rails (= 1.0.1)
   faker (= 0.9.5)
   rails (= 3.0)
+  rake (= 0.9.2.2)
   rspec (= 2.5.0)
   rspec-rails (= 2.5.0)
   sorcery
