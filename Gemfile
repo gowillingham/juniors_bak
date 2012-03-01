@@ -8,6 +8,7 @@ gem 'autotest', '4.4.6'
 gem 'autotest-rails-pure', '4.1.2'
 gem 'autotest-standalone', '4.5.5'
 gem 'autotest-growl', '0.2.9'
+gem 'sorcery'
 
 group :development do
   gem 'rspec-rails', '2.5.0'
