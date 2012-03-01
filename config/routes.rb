@@ -1,5 +1,9 @@
 Juniors::Application.routes.draw do
   
+  get "sessions/new"
+
+  get "users/new"
+
   get 'pages/index'
   get 'pages/about'
   get 'pages/privacy'

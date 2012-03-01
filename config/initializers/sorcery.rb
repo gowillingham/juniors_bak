@@ -12,7 +12,7 @@ Rails.application.config.sorcery.configure do |config|
                                                                       # You can also override 'not_authenticated'
                                                                       # instead.
 
-  # config.save_return_to_url = true                                  # when a non logged in user tries to enter
+  config.save_return_to_url = true                                  # when a non logged in user tries to enter
                                                                       # a page that requires login,
                                                                       # save the URL he wanted to reach,
                                                                       # and send him there after login, using
