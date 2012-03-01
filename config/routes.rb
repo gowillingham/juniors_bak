@@ -2,7 +2,7 @@ Juniors::Application.routes.draw do
   
   get "sessions/new"
 
-  get "users/new"
+  resources :users
 
   get 'pages/index'
   get 'pages/about'
