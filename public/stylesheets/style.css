@@ -6,9 +6,22 @@ h2                        {margin:30px 0 10px 0;font-size:14px;}
 p                         {margin:15px 0;}
 strong                    {font-weight:bold;}
 
-#header			{height:253px;padding:0 0 0 0;background:black url('../images/banner.png') no-repeat 0 0;}
-#navigation	{background-color:#7c1d13;color:white;}
+#header			{height:253px;padding:0 0 0 0;background:transparent url('../images/banner.png') no-repeat 0 0;}
+#header .banner                 {float:left;margin:50px 0 0 35px;}
+#header .banner h1              {color:#ec960d;margin:0;font-size:50px;padding:25px 0;}
+#header .banner h2              {color:#fff;margin:0 0 0 2px;font-size:27px;font-weight:normal;}
+#header .banner a               {text-decoration:none;color:inherit;}
+
+#navigation									{background-color:#7c1d13;color:white;}
+#navigation ul							{margin:0;padding:0;float:left;}
+#navigation ul li 					{list-style-type:none;display:inline;}
+#navigation ul li a					{background-color:#d1a69f;display:block;float:left;padding:5px 10px;color:#7c1d13;text-decoration:none;border-right:1px solid #7c1d13;}
+#navigation ul li a:hover		{background-color:#937374;color:#fff;text-decoration:underline;}
+#navigation ul li a.last		{border:none;}
+
 #wrapper		{background-color:#fff !important;background:#fbf9f4 url('../images/aside.gif') repeat-y 100% 0;}
 #content		{padding:0 1em;}
 #aside			{padding:.5em;}
 #footer			{background-color:#fff;}
+
+.debug			{color:#fff;}

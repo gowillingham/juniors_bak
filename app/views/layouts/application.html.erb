@@ -11,8 +11,14 @@
 </head>
 <body class="<%= "#{controller.controller_name} #{controller.action_name}" %>">
   <div class="container">
-    <div id="header" class="span-24 last">header</div>
-    <div id="navigation" class="span-24	last">navigation</div>
+    <div id="header" class="span-24 last">
+    	<div class="banner">
+        <h1><%= link_to "Lakeville Juniors", pages_index_path, :title => 'home' %></h1>
+        <h2><%= link_to "[ youth volleyball club ]", pages_index_path, :title => 'home' %></h2>
+      </div>
+      
+    </div>
+    <div id="navigation" class="span-24	last"><%= render :partial => 'layouts/navigation' %></div>
 		<div id="wrapper" class="span-24">
 			
 			<div class="span-17">
@@ -37,8 +43,10 @@
 		<div id="footer" class="span-24 last clear">footer</div>
   </div>
   <% if Rails.env.development? %>
-    <div class="span-24"><%= debug(params) %></div>
-    <div class="span-24"><%= debug(session) %></div>
+		<div class='debug'>
+	    <div class="span-24"><%= debug(params) %></div>
+	    <div class="span-24"><%= debug(session) %></div>
+		</div>
   <% end %>
 </body>
 </html>
