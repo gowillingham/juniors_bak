@@ -1,0 +1,1 @@
+APP_LONG_NAME = 'Lakeville juniors'

@@ -12,24 +12,29 @@
 <body class="<%= "#{controller.controller_name} #{controller.action_name}" %>">
   <div class="container">
     <div id="header" class="span-24 last">header</div>
-    <div id="navigation" class="span-24	 last">navigation</div>
-		<div id="content" class="span-16">
-			content
-		  <%= yield %>
-		</div>
-		<div id="aside" class="span-8 last">
-		  links
-		  <ul>
-		    <li><a href="http://www.lakevillenorthjuniors.com/">Lakeville North Juniors</a></li>
-		    <li><a href="http://www.lakevillesouthjuniors.com/">Lakeville South Juniors</a></li>
-		    <li><a href="http://www.ncrusav.org/">North Country - USA Volleyball</a></li>
-		  </ul>
+    <div id="navigation" class="span-24	last">navigation</div>
+		<div id="wrapper" class="span-24">
+			
+			<div class="span-17">
+				<div id="content"><%= yield %></div>
+			</div>
+			
+			<div class="span-7 last">
+				<div id="aside">
+				  links
+				  <ul>
+				    <li><a href="http://www.lakevillenorthjuniors.com/">Lakeville North Juniors</a></li>
+				    <li><a href="http://www.lakevillesouthjuniors.com/">Lakeville South Juniors</a></li>
+				    <li><a href="http://www.ncrusav.org/">North Country - USA Volleyball</a></li>
+				  </ul>
  
-		  <%#= render :partial => "layouts/aside_links" %>
+				  <%#= render :partial => "layouts/aside_links" %>
  
-		  Get some volleyball stuff!
+				  Get some volleyball stuff!
+				</div>
+			</div>
 		</div>
-		<div id="footer" class="span-24 last">footer</div>
+		<div id="footer" class="span-24 last clear">footer</div>
   </div>
   <% if Rails.env.development? %>
     <div class="span-24"><%= debug(params) %></div>

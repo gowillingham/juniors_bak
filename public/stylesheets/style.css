@@ -7,5 +7,8 @@ p                         {margin:15px 0;}
 strong                    {font-weight:bold;}
 
 #header			{height:253px;padding:0 0 0 0;background:black url('../images/banner.png') no-repeat 0 0;}
-#navigation	{background-color:red;color:white;}
-#content		{background-color:white;}
+#navigation	{background-color:#7c1d13;color:white;}
+#wrapper		{background-color:#fff !important;background:#fbf9f4 url('../images/aside.gif') repeat-y 100% 0;}
+#content		{padding:0 1em;}
+#aside			{padding:.5em;}
+#footer			{background-color:#fff;}
