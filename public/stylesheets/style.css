@@ -15,13 +15,19 @@ strong                    {font-weight:bold;}
 #navigation									{background-color:#7c1d13;color:white;}
 #navigation ul							{margin:0;padding:0;float:left;}
 #navigation ul li 					{list-style-type:none;display:inline;}
-#navigation ul li a					{background-color:#d1a69f;display:block;float:left;padding:5px 10px;color:#7c1d13;text-decoration:none;border-right:1px solid #7c1d13;}
+#navigation ul li a					{background-color:#d1a69f;display:block;float:left;padding:5px 10px;color:#7c1d13;text-decoration:none;border-right:1px solid #fff;}
 #navigation ul li a:hover		{background-color:#937374;color:#fff;text-decoration:underline;}
-#navigation ul li a.last		{border:none;}
+#navigation ul li a.last		{}
 
 #wrapper		{background-color:#fff !important;background:#fbf9f4 url('../images/aside.gif') repeat-y 100% 0;}
 #content		{padding:0 1em;}
 #aside			{padding:.5em;}
 #footer			{background-color:#fff;}
+
+/* <-- highlight selected navigation tab --> */
+.pages.contact #navigation a.contact,
+.pages.privacy #navigation a.privacy,
+.pages.about #navigation a.about,
+.pages.index #navigation a.index 				{background-color:#7c1d13;color:#fff;}
 
 .debug			{color:#fff;}
