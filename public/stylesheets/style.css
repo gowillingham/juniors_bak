@@ -5,6 +5,7 @@ h1                        {font-size:20px;margin:15px 0;color:#7c1d13;}
 h2                        {margin:30px 0 10px 0;font-size:14px;}
 p                         {margin:15px 0;}
 strong                    {font-weight:bold;}
+label											{display:block;}
 
 #header			{height:253px;padding:0 0 0 0;background:transparent url('../images/banner.png') no-repeat 0 0;}
 #header .banner                 {float:left;margin:50px 0 0 35px;}
@@ -23,6 +24,9 @@ strong                    {font-weight:bold;}
 #content		{padding:0 1em;}
 #aside			{padding:.5em;}
 #footer			{background-color:#fff;}
+
+/* <-- style forms --> */
+.actions			{margin-top:15px;}
 
 /* <-- highlight selected navigation tab --> */
 .pages.contact #navigation a.contact,
