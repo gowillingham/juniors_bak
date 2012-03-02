@@ -1,6 +1,6 @@
-<h1>Add an administrator</h1>
+<h1>Change <%= @user.email %></h1>
 
-<%= form_for @user do |f| %>
+<%= form_for @user, :url => { :action => :update } do |f| %>
 	<%= render 'shared/errors',  :object => @user %>
   <div class="field">
     <%= f.label :email %>

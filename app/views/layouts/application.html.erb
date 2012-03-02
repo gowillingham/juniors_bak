@@ -22,7 +22,10 @@
 		<div id="wrapper" class="span-24">
 			
 			<div class="span-17">
-				<div id="content"><%= yield %></div>
+				<div id="content">
+					<%= render 'shared/show_flash' %>
+					<%= yield %>
+				</div>
 			</div>
 			
 			<div class="span-7 last">

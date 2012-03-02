@@ -7,11 +7,7 @@
 				<td><%= user.created_at %></td>
 				<td style="width:1%;white-space:nowrap">
 					<%= link_to 'Change', edit_user_path(user) %> | 
-					<%= link_to 'Remove', 
-						user_path(user), 
-						:confirm => "Are you sure? #{user.email} will be permanently removed", 
-						:method => :delete 
-					%>
+					<%= link_to 'Remove', user_path(user), :confirm => "Are you sure? #{user.email} will be permanently removed", :method => :delete %>
 				</td>
 			</tr>
 		<% end %>
