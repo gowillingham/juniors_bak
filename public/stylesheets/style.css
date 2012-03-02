@@ -25,6 +25,13 @@ label											{display:block;}
 #aside			{padding:.5em;}
 #footer			{background-color:#fff;}
 
+div.field_with_errors input 			{border-color:red;}
+
+/* <-- over ride blueprint styles --> */
+.error h1, .alert h1, .notice h1, .success h1, .info h1			{font-size:1.1em;margin:.5em}
+.error ol, .alert ol, .notice ol, .success ol, .info ol			{margin:.5em;}
+
+
 /* <-- style forms --> */
 .actions			{margin-top:15px;}
 
