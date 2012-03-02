@@ -30,10 +30,12 @@
 			
 			<div class="span-7 last">
 				<div id="aside">
-				  <h4>Admin</h4>
-					<ul>
-						<li><%= link_to 'Users', users_path %></li>
-					</ul>
+					<% if current_user %>
+					  <h4>Admin</h4>
+						<ul>
+							<li><%= link_to 'Users', users_path %></li>
+						</ul>
+					<% end %>
 				  <ul>
 				    <li><a href="http://www.lakevillenorthjuniors.com/">Lakeville North Juniors</a></li>
 				    <li><a href="http://www.lakevillesouthjuniors.com/">Lakeville South Juniors</a></li>

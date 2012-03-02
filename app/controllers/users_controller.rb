@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_filter :require_login
   
   def destroy
     @user = User.find(params[:id])

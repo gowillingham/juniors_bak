@@ -2,5 +2,12 @@
   <li><%= link_to "Home", pages_index_path, :class => "index" %></li>
   <li><%= link_to "About", pages_about_path, :class => "about" %></li>
   <li><%= link_to "Privacy", pages_privacy_path, :class => "privacy" %></li>
-  <li><%= link_to "Contact us", pages_contact_path, :class => "contact last" %></li>
+  <li><%= link_to "Contact us", pages_contact_path, :class => "contact" %></li>
+  <li>
+		<% if current_user %>
+			<%= link_to "Sign out", session_path(current_user), :method => :delete, :class => "contact last" %>
+		<% else %>
+			<%= link_to "Sign in", new_session_path, :class => "contact last" %>
+		<% end %>
+	</li>
 </ul>
