@@ -1,8 +1,16 @@
 require 'spec_helper'
 
 describe UsersController do
-
+  render_views
+  
   before(:each) do
+    @user = User.create(
+      :email => 'email@email.com',
+      :password => 'password',
+      :confirm_password => 'password'
+    )
+    login_user(@user)
+    
     @attr = {
       :email => 'gmail@gmail.com',
       :password => 'password',
@@ -15,7 +23,11 @@ describe UsersController do
       @user = User.create!(@attr) 
     end
     
-    it "should require a logged in user"
+    it "should require a logged in user" do
+      logout_user
+      delete :destroy, :id => @user
+      response.should redirect_to(new_session_path)
+    end
     
     it "should remove the user" do
       lambda do
@@ -35,7 +47,11 @@ describe UsersController do
       @user = User.create!(@attr) 
     end
         
-    it "should require a logged in user"
+    it "should require a logged in user" do
+      logout_user
+      put :update, :id => @user, :user => @user
+      response.should redirect_to(new_session_path)
+    end
     
     it "should redirect and display flash to users#index" do
       @user.email = 'new_email.gmail.com'
@@ -63,7 +79,11 @@ describe UsersController do
 
   describe "POST 'create'" do
     
-    it "should require a logged in user"
+    it "should require a logged in user" do
+      logout_user
+      post :create, :user => @attr
+      response.should redirect_to(new_session_path)
+    end
     
     it "should redirect to users#index" do
       post :create, :user => @attr
@@ -83,8 +103,32 @@ describe UsersController do
       end.should change(User, :count).by(0)
     end
   end
+  
+  describe "GET 'index'" do
+    it "should require a logged in user" do
+      logout_user
+      get :index
+      response.should redirect_to(new_session_path)
+    end
+    
+    it "should display a listing of members" do
+      get :index
+      response.should have_selector('td', :content => @user.email)
+    end
+    
+    it "should be successful" do
+      get :index
+      response.should be_success
+    end
+  end
 
   describe "GET 'new'" do
+    it "should require a logged in user" do
+      logout_user
+      get :new
+      response.should redirect_to(new_session_path)
+    end
+    
     it "should be successful" do
       get :new
       response.should be_success

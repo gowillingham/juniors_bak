@@ -18,7 +18,7 @@ label											{display:block;}
 #navigation ul li 					{list-style-type:none;display:inline;}
 #navigation ul li a					{background-color:#d1a69f;display:block;float:left;padding:5px 10px;color:#7c1d13;text-decoration:none;border-right:1px solid #fff;}
 #navigation ul li a:hover		{background-color:#937374;color:#fff;text-decoration:underline;}
-#navigation ul li a.last		{}
+#navigation div.identity		{float:right;padding:.2em;}
 
 #wrapper		{background-color:#fff !important;background:#fbf9f4 url('../images/aside.gif') repeat-y 100% 0;}
 #content		{padding:1em;}

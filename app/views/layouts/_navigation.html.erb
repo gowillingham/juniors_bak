@@ -11,3 +11,4 @@
 		<% end %>
 	</li>
 </ul>
+<%= content_tag(:div, current_user.email, :class => 'identity') if current_user %>
