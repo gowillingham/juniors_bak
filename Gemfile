@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.0'
-gem 'rake', '0.9.2.2'
+gem 'rake', '0.9.2'
 
 gem 'sqlite3', :require => 'sqlite3'
 
@@ -10,6 +10,7 @@ gem 'autotest-rails-pure', '4.1.2'
 gem 'autotest-standalone', '4.5.5'
 gem 'autotest-growl', '0.2.9'
 gem 'sorcery'
+gem 'rdoc', '~> 3.12'
 
 group :development do
   gem 'rspec-rails', '2.5.0'
