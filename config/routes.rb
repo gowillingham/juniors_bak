@@ -1,13 +1,13 @@
 Juniors::Application.routes.draw do
   resources :users
-  resources :sessions
+  resources :sessions, :only => [:new, :create, :destroy]
 
   get 'pages/index'
   get 'pages/about'
   get 'pages/privacy'
   get 'pages/contact'
   
-  root :to => 'home#index'
+  root :to => 'pages#index'
   
   # The priority is based upon order of creation:
   # first created -> highest priority.
