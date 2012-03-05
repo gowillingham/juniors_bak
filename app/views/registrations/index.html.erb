@@ -2,12 +2,27 @@
 
 <% if @registrations.any? %>
 	<table>
+		<thead>
+			<tr>
+				<th>Player</th>
+				<th>Email</th>
+				<th>Grade</th>
+				<th>School</th>
+				<th>Sess</th>
+				<th></th>
+			</tr>
+		</thead>
 		<tbody>
 	<% @registrations.each do |registration| %>
 		<tr>
-			<td>
-				<%= "#{registration.last_name}, #{registration.first_name}" %>
-			</td>
+			<td><%= "#{registration.last_name}, #{registration.first_name}" %></td>
+			<td><%= registration.email %></td>
+			<td><%= registration.grade %></td>
+			<td><%= registration.school %></td>
+			<td><%= registration.session %></td>
+			<td class="actions">
+				<%= link_to 'Change' %>
+				| <%= link_to 'Remove' %>
 		</tr>
 	<% end %>
 		</tbody>

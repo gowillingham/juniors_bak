@@ -14,7 +14,8 @@ strong                    {font-weight:bold;}
 
 div.field	label																	{display:block;font-size:0.9em;}
 div.field	input																	{}
-div.field input[type='text']										{font-size:1em;padding:0.25em;margin:0.25em 0;width:20em;}
+div.field input[type='text'],
+div.field input[type='password']								{font-size:1em;padding:0.25em;margin:0.25em 0;width:20em;}
 div.field input[type='text'].small							{width:10em;}
 div.field input[type='text'].x_small						{width:5em;}
 div.field input[type='text'].tiny								{width:2em;}
@@ -56,6 +57,7 @@ div.checkbox .field_with_errors 	{display:inline;}
 
 /* <-- style forms --> */
 .actions			{margin-top:15px;}
+td.actions		{width:1%;white-space:nowrap;}
 
 /* <-- highlight selected navigation tab --> */
 .registrations #navigation a.register,
