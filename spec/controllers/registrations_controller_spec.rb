@@ -44,10 +44,15 @@ describe RegistrationsController do
     
     it "should not change the regisration given invalid attributes" do
       put :update, :id => @registration, :registration => @attr.merge(:email => '')
-      @registration.reload.email.should_not eq('')
+      @registration.reload.email.should eq(@attr[:email])
     end
     
-    it "shoudl redisplay the edit page given invalid attributes" do
+    it "should change the session when passed a new session" do
+      put :update, :id => @registration, :registration => @attr.merge(:session => 2)
+      @registration.reload.session.should eq(2)
+    end
+    
+    it "should redisplay the edit page given invalid attributes" do
       put :update, :id => @registration, :registration => @attr.merge(:email => '')
       response.should render_template('edit')
     end

@@ -57,6 +57,8 @@ div.checkbox .field_with_errors 	{display:inline;}
 table.no_zebra tbody tr:nth-child(even) td,
 table.no_zebra tbody tr.even td 														{background: transparent;}
 
+select.text 																								{padding:4px;border-color:#bbb;}
+
 /* <-- style forms --> */
 .actions			{margin-top:15px;}
 td.actions		{width:1%;white-space:nowrap;}

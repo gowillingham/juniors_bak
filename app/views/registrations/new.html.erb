@@ -7,7 +7,7 @@
 
 		<div class="field">
 		  <%= f.label :session, 'Which session?' %>
-		  <%= select :registration, :session, [['Session I Beginner (grade 1-3)', 1], ['Session II Intermediate (grade 3-6)']], {:prompt => ''} %>
+		  <%= f.select :session, [['Session I Beginner (grade 1-3)', 1], ['Session II Intermediate (grade 3-6)']], {:prompt => ''} %>
 		</div>
 		
 		<div class="field new_section">
@@ -59,7 +59,7 @@
 		</div>
 		<div class="field new_section">
 		  <%= f.label :grade %>
-		  <%= select :registration, :grade, (1..6).map { |i| [i,i] }, :prompt => '' %>
+		  <%= f.select :grade, (1..6).map { |i| [i,i] }, :prompt => '' %>
 		</div>
 		<div class="field">
 		  <%= f.label :school %>
@@ -67,7 +67,7 @@
 		</div>
 		<div class="field">
 		  <%= f.label :tshirt_size %>
-		  <%= select :registration, :tshirt_size, SIZE_OPTIONS, :prompt => '' %>
+		  <%= f.select :tshirt_size, SIZE_OPTIONS, :prompt => '' %>
 		</div>
 		<div class="field">
 		  <%= f.label :note, 'A note for this registration' %>
@@ -86,7 +86,7 @@
 			</div>
 			<div class="field new_section">
 			  <%= f.label :parent_tshirt_size %>
-			  <%= select :registration, :parent_tshirt_size, SIZE_OPTIONS, :prompt => '' %>
+			  <%= f.select :parent_tshirt_size, SIZE_OPTIONS, :prompt => '' %>
 			</div>
 		</div>
 		
