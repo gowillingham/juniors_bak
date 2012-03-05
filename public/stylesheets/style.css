@@ -5,8 +5,26 @@ h1                        {font-size:20px;margin:15px 0;color:#7c1d13;}
 h2                        {margin:30px 0 10px 0;font-size:14px;}
 p                         {margin:15px 0;}
 strong                    {font-weight:bold;}
-label											{display:block;}
 
+.round        {-moz-border-radius:10px;-webkit-border-radius:10px;border-radius:10px;}
+.small_round  {-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px;}
+.shadow       {-moz-box-shadow: 3px 3px 4px #999;-webkit-box-shadow: 3px 3px 4px #999;box-shadow: 3px 3px 4px #999;}
+
+
+
+div.field	label																	{display:block;font-size:0.9em;}
+div.field	input																	{}
+div.field input[type='text']										{font-size:1em;padding:0.25em;margin:0.25em 0;width:20em;}
+div.field input[type='text'].small							{width:10em;}
+div.field input[type='text'].x_small						{width:5em;}
+div.field input[type='text'].tiny								{width:2em;}
+div.field select																{font-size:1em;padding:0.25em;border-color:#bbb;}
+div.field textarea															{font-size:1em;padding:0.25em;width:40em;height:8em;}
+div.field.new_section, div.actions.new_section	{margin-top:2em;}
+div.field div.checkbox													{margin-top:1em;}
+div.field div.checkbox label										{display:inline}                                          			
+div.highlight																		{margin-top:2em;}
+                              						
 #header													{height:253px;padding:0 0 0 0;background:transparent url('../images/banner.png') no-repeat 0 0;}
 #header .banner                 {float:left;margin:50px 0 0 35px;}
 #header .banner h1              {color:#ec960d;margin:0;font-size:50px;padding:25px 0;}
@@ -26,6 +44,10 @@ label											{display:block;}
 #footer			{background-color:#fff;}
 
 div.field_with_errors input 			{border-color:red;}
+div.field_with_errors select 			{border-color:red;}
+div.field_with_errors textarea 		{border-color:red;}
+div.field_with_errors label				{color:red;}
+div.checkbox .field_with_errors 	{display:inline;}
 
 /* <-- over ride blueprint styles --> */
 .error h1, .alert h1, .notice h1, .success h1, .info h1			{font-size:1.1em;margin:.5em}
@@ -36,6 +58,7 @@ div.field_with_errors input 			{border-color:red;}
 .actions			{margin-top:15px;}
 
 /* <-- highlight selected navigation tab --> */
+.registrations #navigation a.register,
 .pages.contact #navigation a.contact,
 .pages.privacy #navigation a.privacy,
 .pages.about #navigation a.about,

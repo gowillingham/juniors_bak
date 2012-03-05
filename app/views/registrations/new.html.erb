@@ -1,0 +1,114 @@
+<h1>New registration</h1>
+
+<%= form_for @registration do |f| %>
+	<%= render 'shared/errors',  :object => @registration %>
+  <fieldset>
+    <legend>Player information</legend>
+
+		<div class="field">
+		  <%= f.label :session, 'Which session?' %>
+		  <%= select :registration, :session, [['Session I Beginner (grade 1-3)', 1], ['Session II Intermediate (grade 3-6)']], {:prompt => ''} %>
+		</div>
+		
+		<div class="field new_section">
+		  <%= f.label :first_name, 'Player first name' %>
+		  <%= f.text_field :first_name %>
+		</div>
+		<div class="field">
+		  <%= f.label :last_name, 'Player last name' %>
+		  <%= f.text_field :last_name %>
+		</div>
+		
+		<div class="field new_section">
+		  <%= f.label :parent_first_name %>
+		  <%= f.text_field :parent_first_name %>
+		</div>
+		<div class="field">
+		  <%= f.label :parent_last_name %>
+		  <%= f.text_field :parent_last_name %>
+		</div>
+		
+		<div class="field new_section">
+		  <%= f.label :email %>
+		  <%= f.text_field :email %>
+		</div>
+		<div class="field">
+		  <%= f.label :email_confirmation %>
+		  <%= f.text_field :email_confirmation %>
+		</div>
+		<div class="field">
+		  <%= f.label :phone %>
+		  <%= f.text_field :phone, :class => 'small' %>
+		</div>
+
+		<div class="field new_section">
+		  <%= f.label :address %>
+		  <%= f.text_field :address %>
+		</div>
+		<div class="field">
+		  <%= f.label :city %>
+		  <%= f.text_field :city, :class => 'small' %>
+		</div>
+		<div class="field">
+		  <%= f.label :state %>
+		  <%= select :registration, :state, [['MN', 'MN']] %>
+		</div>
+		<div class="field">
+		  <%= f.label :zip %>
+		  <%= f.text_field :zip, :class => 'small' %>
+		</div>
+		<div class="field new_section">
+		  <%= f.label :grade %>
+		  <%= select :registration, :grade, (1..6).map { |i| [i,i] }, :prompt => '' %>
+		</div>
+		<div class="field">
+		  <%= f.label :school %>
+		  <%= select :registration, :school, SCHOOL_OPTIONS, :prompt => '' %>
+		</div>
+		<div class="field">
+		  <%= f.label :tshirt_size %>
+		  <%= select :registration, :tshirt_size, SIZE_OPTIONS, :prompt => '' %>
+		</div>
+		<div class="field">
+		  <%= f.label :note, 'A note for this registration' %>
+		  <%= f.text_area :note %>
+		</div>
+		
+		<div class="highlight success round">
+			Would you consider being a parent helper for your daughter's team? 
+			You don't need to know anything about volleyball. 
+			We'll make it easy and fun!!
+			<div class="field">
+				<div class="checkbox">
+				  <%= f.check_box :parent_helper %>
+				  <%= f.label :parent_helper, "Yes - I'll be a parent helper! " %>
+				</div>
+			</div>
+			<div class="field new_section">
+			  <%= f.label :parent_tshirt_size %>
+			  <%= select :registration, :parent_tshirt_size, SIZE_OPTIONS, :prompt => '' %>
+			</div>
+		</div>
+		
+		<div class="highlight alert round">
+			In consideration of your acceptance of my child as a participant in the Lakeville Junior Volleyball program, 
+			I hereby waive all claims against Lakeville Junior Volleyball, Inc., 
+			its coaches, board members, organizers, persons transporting my child to and from activities, 
+			from any claim arising out of injury or harm to my child incidental to, 
+			connected with, or arising out of the Lakeville Junior Volleyball activities. 
+			All sports have intrinsic hazards. 
+			Participation in the Lakeville Junior Volleyball in-house session implies some risk of injury.	
+			<div class="field">
+				<div class="checkbox">		  
+					<%= f.check_box :has_release %>
+				  <%= f.label :has_release, 'I have read and agree to the liability release' %>
+				</div>
+			</div>	
+		</div>
+		
+	  <div class="actions new_section">
+			<%= f.submit 'Continue' %>
+			or <%= link_to 'Cancel', pages_index_path %>
+		</div>
+	</fieldset>
+<% end %>

@@ -1,0 +1,17 @@
+<h1>Registrations</h1>
+
+<% if @registrations.any? %>
+	<table>
+		<tbody>
+	<% @registrations.each do |registration| %>
+		<tr>
+			<td>
+				<%= "#{registration.last_name}, #{registration.first_name}" %>
+			</td>
+		</tr>
+	<% end %>
+		</tbody>
+	</table>
+<% else %>
+	no registrations
+<% end %>
