@@ -7,6 +7,7 @@ describe RegistrationsController do
     @user = User.create(:email => 'email@gmail.com', :password => 'p', :password_confirmation => 'p')
     login_user
     
+    @product = Product.create(:name => 'session 1', :price => 7000)
     @attr = {
       :first_name => 'player',
       :last_name => 'name', 
@@ -25,7 +26,8 @@ describe RegistrationsController do
       :parent_tshirt_size => 'XL',
       :note => "Some text that I'm sending along with this message as a note. Some text that I'm sending along with this message as a note. Some text that I'm sending along with this message as a note. ",
       :session => 1,
-      :has_release => true
+      :has_release => true, 
+      :product_id => @product.id
     }
     @registration = Registration.create!(@attr)
   end

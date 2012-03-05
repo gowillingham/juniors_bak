@@ -1,4 +1,7 @@
 class Registration < ActiveRecord::Base
+  has_one :product
+  validates_presence_of :product_id
+  
   validates_presence_of :session, :message => ": You didn't select an inhouse session"
 
   validates_presence_of :first_name, :last_name, :parent_first_name, :parent_last_name

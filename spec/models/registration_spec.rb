@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe Registration do
   before(:each) do
+    @product = Product.create(:name => 'session 1', :price => 7000)
     @attr = {
       :first_name => 'player',
       :last_name => 'name', 
@@ -20,7 +21,8 @@ describe Registration do
       :parent_tshirt_size => 'XL',
       :note => "Some text that I'm sending along with this message as a note. Some text that I'm sending along with this message as a note. Some text that I'm sending along with this message as a note. ",
       :session => 1,
-      :has_release => true
+      :has_release => true,
+      :product_id => @product.id
     }
   end
   
@@ -29,7 +31,14 @@ describe Registration do
       Registration.create!(@attr)
     end.should change(Registration, :count).by(1) 
   end 
-
+  
+  describe "methods" do
+    it "should respond to products" do
+      registration = Registration.create(@attr)
+      registration.should respond_to(:product)
+    end
+  end 
+  
   describe "validations" do 
     it "should require a player first and last name" do
       Registration.new(@attr.merge(:first_name => '')).should_not be_valid
