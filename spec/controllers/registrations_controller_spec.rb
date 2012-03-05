@@ -30,6 +30,34 @@ describe RegistrationsController do
     @registration = Registration.create!(@attr)
   end
   
+  describe "PUT 'update'" do
+    it "should require logged in user" do
+      logout_user
+      put :update, :id => @registration, :registration => @attr
+      response.should redirect_to(new_session_path)
+    end 
+    
+    it "should change the registration given valid attributes" do
+      put :update, :id => @registration, :registration => @attr.merge(:email => 'new_email@gmail.com')
+      @registration.reload.email.should eq('new_email@gmail.com')
+    end 
+    
+    it "should not change the regisration given invalid attributes" do
+      put :update, :id => @registration, :registration => @attr.merge(:email => '')
+      @registration.reload.email.should_not eq('')
+    end
+    
+    it "shoudl redisplay the edit page given invalid attributes" do
+      put :update, :id => @registration, :registration => @attr.merge(:email => '')
+      response.should render_template('edit')
+    end
+    
+    it "should redirect to registrations#show on success" do 
+      put :update, :id => @registration, :registration => @attr.merge(:email => 'new_email@gmail.com')
+      response.should redirect_to(registration_path(@registration))
+    end 
+  end
+  
   describe "GET 'edit'" do
     it "should require logged in user" do
       logout_user

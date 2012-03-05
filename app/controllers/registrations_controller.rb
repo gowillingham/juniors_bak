@@ -1,6 +1,17 @@
 class RegistrationsController < ApplicationController
   before_filter :require_login, :except => [:create, :new]
   
+  def update
+    @registration = Registration.find(params[:id])
+    @registration.update_attributes(params[:registration])
+    if @registration.save
+      flash[:success] = 'The registration was saved'
+      redirect_to registration_url(@registration)
+    else
+      render 'edit'
+    end
+  end
+
   def edit
     @registration = Registration.find(params[:id])
   end

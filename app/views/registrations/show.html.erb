@@ -1,4 +1,9 @@
-<h1>Showing registration for <%= "#{@registration.first_name} #{@registration.last_name}" %></h1>
+<h1>Registration for <%= "#{@registration.first_name} #{@registration.last_name}" %></h1>
+
+<p>
+	<%= link_to 'Back to registrations'%>
+	| <%= link_to 'Change', edit_registration_path(@registration) %>
+	| <%= link_to 'Remove', registration_path(@registration), :confirm => "This registration for #{@registration.first_name} #{@registration.last_name} will be removed. There is no undo. ", :method => :delete %>
 
 <table class="first_column_fixed">
 	<tbody>
