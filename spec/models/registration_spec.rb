@@ -29,7 +29,7 @@ describe Registration do
       Registration.create!(@attr)
     end.should change(Registration, :count).by(1) 
   end 
-  
+
   describe "validations" do 
     it "should require a player first and last name" do
       Registration.new(@attr.merge(:first_name => '')).should_not be_valid
