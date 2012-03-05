@@ -10,7 +10,7 @@ strong                    {font-weight:bold;}
 .small_round  {-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px;}
 .shadow       {-moz-box-shadow: 3px 3px 4px #999;-webkit-box-shadow: 3px 3px 4px #999;box-shadow: 3px 3px 4px #999;}
 
-table.details tr td:first-child									{width:1%;white-space:nowrap;font-weight:bold;}
+table.first_column_fixed tr td:first-child			{width:1%;white-space:nowrap;font-weight:bold;}
 
 div.field	label																	{display:block;font-size:0.9em;}
 div.field	input																	{}
@@ -54,6 +54,8 @@ div.checkbox .field_with_errors 	{display:inline;}
 .error h1, .alert h1, .notice h1, .success h1, .info h1			{font-size:1.1em;margin:.5em}
 .error ol, .alert ol, .notice ol, .success ol, .info ol			{margin:.5em;}
 
+table.no_zebra tbody tr:nth-child(even) td,
+table.no_zebra tbody tr.even td 														{background: transparent;}
 
 /* <-- style forms --> */
 .actions			{margin-top:15px;}

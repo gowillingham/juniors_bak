@@ -21,7 +21,7 @@
 			<td><%= registration.school %></td>
 			<td><%= registration.session %></td>
 			<td class="actions">
-				<%= link_to 'Change' %>
+				<%= link_to 'Change', edit_registration_path(registration) %>
 				| <%= link_to 'Remove', registration_path(registration), :confirm => "#{registration.first_name} #{registration.last_name} will be removed. There is no undo. ", :method => :delete %>
 		</tr>
 	<% end %>

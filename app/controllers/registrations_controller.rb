@@ -1,9 +1,12 @@
 class RegistrationsController < ApplicationController
   before_filter :require_login, :except => [:create, :new]
   
+  def edit
+    @registration = Registration.find(params[:id])
+  end
+  
   def show
     @registration = Registration.find(params[:id])
-    render 'show'
   end
   
   def destroy

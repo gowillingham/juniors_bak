@@ -30,6 +30,20 @@ describe RegistrationsController do
     @registration = Registration.create!(@attr)
   end
   
+  describe "GET 'edit'" do
+    it "should require logged in user" do
+      logout_user
+      get :edit, :id => @registration
+      response.should redirect_to(new_session_path)
+    end
+    
+    it "should display the edit form for the selected user" do
+      get :edit, :id => @registration
+      response.should have_selector('form', :action => registration_path(@registration))
+      response.should have_selector('td input', :value => @registration.first_name)
+    end
+  end
+  
   describe "GET 'show'" do
     it "should require logged in user" do
       logout_user
@@ -37,7 +51,7 @@ describe RegistrationsController do
       response.should redirect_to(new_session_path)
     end
     
-    it "should display a form for the selected user" do
+    it "should display information for the selected user" do
       get :show, :id => @registration
       response.should have_selector("td", :content => "#{@registration.last_name}, #{@registration.first_name}")
       response.should have_selector("td", :content => @registration.email)

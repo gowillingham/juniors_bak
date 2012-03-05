@@ -1,0 +1,82 @@
+<%= form_for @registration do |f| %>
+	<%= render 'shared/errors', :object => @registration %>
+	<fieldset>
+		<legend>Edit <%= "#{@registration.first_name} #{@registration.last_name}" %></legend>
+		<table class="no_zebra first_column_fixed">
+			<tbody>
+				<tr>
+					<td><%= f.label :session %></td>
+					<td><%= f.text_field :session, :class => 'text' %></td>
+				</tr>
+				<tr>
+					<td><%= f.label :first_name %></td>
+					<td><%= f.text_field :first_name, :class => 'text' %></td>
+				</tr>
+				<tr>
+					<td><%= f.label :last_name %></td>
+					<td><%= f.text_field :last_name, :class => 'text' %></td>
+				</tr>
+				<tr>
+					<td><%= f.label :parent_first_name %></td>
+					<td><%= f.text_field :parent_first_name, :class => 'text' %></td>
+				</tr>
+				<tr>
+					<td><%= f.label :parent_last_name %></td>
+					<td><%= f.text_field :parent_last_name, :class => 'text' %></td>
+				</tr>
+				<tr>
+					<td><%= f.label :email %></td>
+					<td><%= f.text_field :email, :class => 'text' %></td>
+				</tr>
+				<tr>
+					<td><%= f.label :phone %></td>
+					<td><%= f.text_field :phone, :class => 'text' %></td>
+				</tr>
+				<tr>
+					<td><%= f.label :address %></td>
+					<td><%= f.text_field :address, :class => 'text' %></td>
+				</tr>
+				<tr>
+					<td><%= f.label :city %></td>
+					<td><%= f.text_field :city, :class => 'text' %></td>
+				</tr>
+				<tr>
+					<td><%= f.label :state %></td>
+					<td><%= f.text_field :state, :class => 'text' %></td>
+				</tr>
+				<tr>
+					<td><%= f.label :zip %></td>
+					<td><%= f.text_field :zip, :class => 'text' %></td>
+				</tr>
+				<tr>
+					<td><%= f.label :school %></td>
+					<td><%= f.text_field :school, :class => 'text' %></td>
+				</tr>
+				<tr>
+					<td><%= f.label :grade %></td>
+					<td><%= f.text_field :grade, :class => 'text' %></td>
+				</tr>
+				<tr>
+					<td><%= f.label :tshirt_size %></td>
+					<td><%= f.text_field :tshirt_size, :class => 'text' %></td>
+				</tr>
+				<tr>
+					<td><%= f.label :parent_helper %></td>
+					<td><%= f.text_field :parent_helper, :class => 'text' %></td>
+				</tr>
+				<tr>
+					<td><%= f.label :parent_tshirt_size %></td>
+					<td><%= f.text_field :parent_tshirt_size, :class => 'text' %></td>
+				</tr>
+				<tr>
+					<td><%= f.label :has_release %></td>
+					<td><%= f.text_field :has_release, :class => 'text' %></td>
+				</tr>
+			</tbody>
+		</table>
+		<div class="actions">
+			<%= f.submit 'Save' %>
+			or <%= link_to 'Cancel', registrations_path %>
+		</div>
+	</fieldset>
+<% end %>
