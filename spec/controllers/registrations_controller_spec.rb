@@ -30,13 +30,41 @@ describe RegistrationsController do
     @registration = Registration.create!(@attr)
   end
   
+  describe "GET 'show'" do
+    it "should require logged in user" do
+      logout_user
+      get :show, :id => @registration
+      response.should redirect_to(new_session_path)
+    end
+    
+    it "should display a form for the selected user" do
+      get :show, :id => @registration
+      response.should have_selector("td", :content => "#{@registration.last_name}, #{@registration.first_name}")
+      response.should have_selector("td", :content => @registration.email)
+    end
+  end
+  
+  describe "DELETE 'destroy'" do
+    it "should require logged in user" do
+      logout_user
+      delete :destroy, :id => @registration
+      response.should redirect_to(new_session_path)
+    end
+    
+    it "should remove the registration" do
+      lambda do
+        delete :destroy, :id => @registration
+      end.should change(Registration, :count).by(-1)
+    end 
+  end
+  
   describe "GET 'index'" do
     it "should display a listing of registrations" do
       get :index
       response.should have_selector('td', :content => "#{@attr[:last_name]}, #{@attr[:first_name]}")
     end
     
-    it "should not allow non-authenticated user" do
+    it "should require logged in user" do
       logout_user
       get :index
       response.should redirect_to(new_session_path)
@@ -61,7 +89,7 @@ describe RegistrationsController do
       response.should redirect_to(pages_index_path)
     end
     
-    it "should allow non-authenticated user" do
+    it "should not require a logged in user" do
       logout_user
       post :create, :registration => @attr
       response.should redirect_to(pages_index_path)
@@ -75,7 +103,7 @@ describe RegistrationsController do
     end
   end
   
-  it "should allow non-authenticated user" do
+  it "should not require a logged in user" do
     logout_user
     get :new
     response.should render_template('new')

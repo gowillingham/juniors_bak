@@ -10,7 +10,7 @@ strong                    {font-weight:bold;}
 .small_round  {-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px;}
 .shadow       {-moz-box-shadow: 3px 3px 4px #999;-webkit-box-shadow: 3px 3px 4px #999;box-shadow: 3px 3px 4px #999;}
 
-
+table.details tr td:first-child									{width:1%;white-space:nowrap;font-weight:bold;}
 
 div.field	label																	{display:block;font-size:0.9em;}
 div.field	input																	{}

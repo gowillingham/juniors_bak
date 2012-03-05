@@ -1,0 +1,74 @@
+<h1>Showing registration for <%= "#{@registration.first_name} #{@registration.last_name}" %></h1>
+
+<table class="details">
+	<tbody>
+		<tr>
+			<td>Session: </td>
+			<td><%= @registration.session %></td>
+		</tr>
+		<tr>
+			<td>Player name: </td>
+			<td><%= "#{@registration.last_name}, #{@registration.first_name}" %></td>
+		</tr>
+		<tr>
+			<td>Parent name: </td>
+			<td><%= "#{@registration.parent_last_name}, #{@registration.parent_first_name}" %></td>
+		</tr>
+		<tr>
+			<td>Email: </td>
+			<td><%= @registration.email %></td>
+		</tr>
+		<tr>
+			<td>Phone: </td>
+			<td><%= @registration.phone %></td>
+		</tr>
+		<tr>
+			<td>Street address: </td>
+			<td><%= @registration.address %></td>
+		</tr>
+		<tr>
+			<td>City: </td>
+			<td><%= @registration.city %></td>
+		</tr>
+		<tr>
+			<td>State: </td>
+			<td><%= @registration.state %></td>
+		</tr>
+		<tr>
+			<td>Zip: </td>
+			<td><%= @registration.zip %></td>
+		</tr>
+		<tr>
+			<td>School: </td>
+			<td><%= @registration.school %></td>
+		</tr>
+		<tr>
+			<td>Grade: </td>
+			<td><%= @registration.grade %></td>
+		</tr>
+		<tr>
+			<td>Tshirt size: </td>
+			<td><%= @registration.tshirt_size %></td>
+		</tr>
+		<tr>
+			<td>Parent helper?: </td>
+			<td><%= @registration.parent_helper? %></td>
+		</tr>
+		<tr>
+			<td>Parent tshirt size: </td>
+			<td><%= @registration.parent_tshirt_size %></td>
+		</tr>
+		<tr>
+			<td>Liability release?: </td>
+			<td><%= @registration.has_release %></td>
+		</tr>
+		<tr>
+			<td>Notes: </td>
+			<td><%= @registration.note %></td>
+		</tr>
+		<tr>
+			<td>Created at: </td>
+			<td><%= @registration.created_at.strftime("%a %b %d, %Y at %I:%M %p") %></td>
+		</tr>
+	</tbody>
+</table>

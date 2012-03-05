@@ -15,14 +15,14 @@
 		<tbody>
 	<% @registrations.each do |registration| %>
 		<tr>
-			<td><%= "#{registration.last_name}, #{registration.first_name}" %></td>
+			<td><%= link_to "#{registration.last_name}, #{registration.first_name}", registration_path(registration) %></td>
 			<td><%= registration.email %></td>
 			<td><%= registration.grade %></td>
 			<td><%= registration.school %></td>
 			<td><%= registration.session %></td>
 			<td class="actions">
 				<%= link_to 'Change' %>
-				| <%= link_to 'Remove' %>
+				| <%= link_to 'Remove', registration_path(registration), :confirm => "#{registration.first_name} #{registration.last_name} will be removed. There is no undo. ", :method => :delete %>
 		</tr>
 	<% end %>
 		</tbody>
