@@ -1,2 +1,34 @@
-<h1>Products#index</h1>
-<p>Find me in app/views/products/index.html.erb</p>
+<h1>Products</h1>
+<p>
+	<%= link_to 'New product &raquo;'.html_safe, new_product_path %>
+</p>
+<% if @products.any? %>
+	<table>
+		<thead>
+			<tr>
+				<th>Product</th>
+				<th>Description</th>
+				<th>Price</th>
+				<th>Enabled?</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @products.each do |p| %>
+				<tr>
+					<td><%= link_to p.name, product_path(p) %></td>
+					<td><%= p.description %></td>
+					<td><%= p.price %></td>
+					<td><%= p.enabled %></td>
+					<td class="actions">
+						<%= link_to 'Change', edit_product_path(p) %>
+						| <%= link_to 'Remove', product_path(p), :method => :delete %>
+					</td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+<% end %>
+
+
+

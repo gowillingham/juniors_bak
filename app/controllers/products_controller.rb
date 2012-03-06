@@ -23,6 +23,7 @@ class ProductsController < ApplicationController
   end
 
   def index
+    @products = Product.find(:all)
   end
 
   def show

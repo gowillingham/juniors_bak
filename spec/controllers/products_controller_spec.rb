@@ -15,6 +15,24 @@ describe ProductsController do
     }
   end
   
+  describe "GET 'index'" do
+    before(:each) do
+      @product = Product.create(@attr)
+    end
+    
+    it "should require logged in user" do
+      logout_user
+      post :create, :product => @attr
+      response.should redirect_to(new_session_path)
+    end
+    
+    it "should display a listing of the records" do
+      get :index
+      response.should render_template('index')
+      response.should have_selector('td', :content => @product.name)
+    end
+  end 
+  
   describe "POST 'create'" do
     it "should require logged in user" do
       logout_user
