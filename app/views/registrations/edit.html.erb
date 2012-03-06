@@ -5,8 +5,8 @@
 		<table class="no_zebra first_column_fixed">
 			<tbody>
 				<tr>
-					<td><%= f.label :session %></td>
-				  <td><%= f.select :session, SESSION_OPTIONS, { :prompt => '' }, :class => :text %></td>
+					<td><%= f.label :product_id, 'Session' %></td>
+				  <td><%= f.select :product_id, Product.all.map { |p| [p.name, p.id] }, { :prompt => '' }, :class => :text %></td>
 				</tr>
 				<tr>
 					<td><%= f.label :first_name %></td>

@@ -6,8 +6,8 @@
     <legend>Player information</legend>
 
 		<div class="field">
-		  <%= f.label :session, 'Which session?' %>
-		  <%= f.select :session, SESSION_OPTIONS, {:prompt => ''} %>
+		  <%= f.label :product_id, 'Which session?' %>
+		  <%= f.select :product_id, Product.all.map { |p| [p.name, p.id] }, {:prompt => ''} %>
 		</div>
 		
 		<div class="field new_section">

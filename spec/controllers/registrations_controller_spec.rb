@@ -25,7 +25,6 @@ describe RegistrationsController do
       :tshirt_size => 'YL', 
       :parent_tshirt_size => 'XL',
       :note => "Some text that I'm sending along with this message as a note. Some text that I'm sending along with this message as a note. Some text that I'm sending along with this message as a note. ",
-      :session => 1,
       :has_release => true, 
       :product_id => @product.id
     }
@@ -49,9 +48,10 @@ describe RegistrationsController do
       @registration.reload.email.should eq(@attr[:email])
     end
     
-    it "should change the session when passed a new session" do
-      put :update, :id => @registration, :registration => @attr.merge(:session => 2)
-      @registration.reload.session.should eq(2)
+    it "should change the product when passed a new product" do
+      product = Product.create(:name => 'new product', :price => '70')
+      put :update, :id => @registration, :registration => @attr.merge(:product_id => product.id)
+      @registration.reload.product.id.should eq(product.id)
     end
     
     it "should redisplay the edit page given invalid attributes" do

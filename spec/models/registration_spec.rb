@@ -20,7 +20,6 @@ describe Registration do
       :tshirt_size => 'YL', 
       :parent_tshirt_size => 'XL',
       :note => "Some text that I'm sending along with this message as a note. Some text that I'm sending along with this message as a note. Some text that I'm sending along with this message as a note. ",
-      :session => 1,
       :has_release => true,
       :product_id => @product.id
     }
@@ -77,8 +76,8 @@ describe Registration do
       Registration.new(@attr.merge(:tshirt_size => '')).should_not be_valid
     end
     
-    it "should require a session" do
-      Registration.new(@attr.merge(:session => nil)).should_not be_valid
+    it "should require a product" do
+      Registration.new(@attr.merge(:product_id => nil)).should_not be_valid
     end
   end
 end

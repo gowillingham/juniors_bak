@@ -1,6 +1,4 @@
 class Product < ActiveRecord::Base
-  belongs_to :registration
-  
   validates :name,
     :presence => true
     

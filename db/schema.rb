@@ -39,10 +39,10 @@ ActiveRecord::Schema.define(:version => 20120306144540) do
     t.string   "tshirt_size",                           :null => false
     t.string   "parent_tshirt_size"
     t.string   "note"
-    t.integer  "session",                               :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "product_id"
+    t.integer  "session"
   end
 
   create_table "users", :force => true do |t|
