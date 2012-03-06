@@ -15,6 +15,32 @@ describe ProductsController do
     }
   end
   
+  
+  
+  describe "GET 'show'" do
+    before(:each) do
+      @product = Product.create(@attr)
+    end
+    
+    it "should require logged in user" do
+      logout_user
+      get :show, :id => @product
+      response.should redirect_to(new_session_path)
+    end  
+    
+    it "should be success" do
+      get :show, :id => @product
+      response.should render_template('show')
+    end 
+    
+    it "should display the selected product" do
+      get :show, :id => @product
+      response.should have_selector('td', :content => @product.name)
+      response.should have_selector('td', :content => @product.price.to_s)
+      response.should have_selector('td', :content => @product.description)
+    end
+  end 
+  
   describe "PUT 'update'" do
     before(:each) do
       @product = Product.create(@attr)

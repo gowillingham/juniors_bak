@@ -22,7 +22,7 @@
 					<td><%= p.enabled %></td>
 					<td class="actions">
 						<%= link_to 'Change', edit_product_path(p) %>
-						| <%= link_to 'Remove', product_path(p), :method => :delete %>
+						| <%= link_to 'Remove', product_path(p), :confirm => "This product #{p.name} will be removed. There is no undo. ", :method => :delete %>
 					</td>
 				</tr>
 			<% end %>
