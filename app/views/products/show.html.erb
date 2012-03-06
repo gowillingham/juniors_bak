@@ -1,7 +1,7 @@
 <h1>Details for <%= @product.name %></h1>
 
 <p>
-	<%= link_to 'Back to products'%>
+	<%= link_to 'Back to products', products_path %>
 	| <%= link_to 'Change', edit_product_path(@product) %>
 	| <%= link_to 'Remove', product_path(@product), :confirm => "This product #{@product.name} will be removed. There is no undo. ", :method => :delete %>
 </p>

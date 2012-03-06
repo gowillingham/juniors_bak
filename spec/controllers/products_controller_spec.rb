@@ -15,7 +15,29 @@ describe ProductsController do
     }
   end
   
-  
+  describe "DELETE 'destroy'" do
+    before(:each) do
+      @product = Product.create(@attr)
+    end
+    
+    it "should require logged in user" do
+      logout_user
+      delete :destroy, :id => @product
+      response.should redirect_to(new_session_path)
+    end  
+    
+    it "should redirect to products#index on success" do
+      delete :destroy, :id => @product
+      response.should redirect_to(products_path)
+      flash[:success].should =~ /was removed/i
+    end 
+    
+    it "should remove the product" do
+      lambda do
+        delete :destroy, :id => @product
+      end.should change(Product, :count).by(-1)
+    end
+  end
   
   describe "GET 'show'" do
     before(:each) do
