@@ -6,6 +6,14 @@ class ProductsController < ApplicationController
   end
 
   def create
+    @product = Product.new
+    @product.update_attributes(params[:product])
+    if @product.save
+      flash[:success] = 'The product was saved'
+      redirect_to products_path
+    else
+      render 'new'
+    end
   end
 
   def edit

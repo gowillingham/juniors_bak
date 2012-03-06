@@ -10,12 +10,12 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120305201219) do
+ActiveRecord::Schema.define(:version => 20120306144540) do
 
   create_table "products", :force => true do |t|
     t.string   "name",                          :null => false
     t.string   "description"
-    t.integer  "price",       :default => 0,    :null => false
+    t.integer  "price"
     t.boolean  "enabled",     :default => true
     t.datetime "created_at"
     t.datetime "updated_at"

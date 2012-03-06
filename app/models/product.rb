@@ -1,6 +1,10 @@
 class Product < ActiveRecord::Base
   belongs_to :registration
   
-  validates_presence_of :name
-  validates_presence_of :price
+  validates :name,
+    :presence => true
+    
+  validates :price, 
+    :numericality => true, 
+    :presence => true
 end
