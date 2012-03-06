@@ -1,5 +1,8 @@
 class ProductsController < ApplicationController
+  before_filter :require_login
+  
   def new
+    @product = Product.new
   end
 
   def create
