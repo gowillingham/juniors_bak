@@ -15,6 +15,34 @@ describe ProductsController do
     }
   end
   
+  describe "PUT 'update'" do
+    before(:each) do
+      @product = Product.create(@attr)
+    end
+    
+    it "should require logged in user" do
+      logout_user
+      put :update, :id => @product, :product => @attr
+      response.should redirect_to(new_session_path)
+    end  
+    
+    it "should redirect to product#index on success" do
+      put :update, :id => @product, :product => @attr.merge(:name => 'New name')
+      response.should redirect_to(products_path)
+      flash[:success].should =~ /saved/i
+    end
+    
+    it "should change the product given valid attributes" do
+      put :update, :id => @product, :product => @attr.merge(:name => 'New name')
+      @product.reload.name.should eq('New name')
+    end 
+    
+    it "should not change the product given invalid attributes" do
+      put :update, :id => @product, :product => @attr.merge(:name => '')
+      @product.reload.name.should eq(@attr[:name])
+    end
+  end
+  
   describe "GET 'edit'" do
     before(:each) do
       @product = Product.create(@attr)
@@ -22,12 +50,12 @@ describe ProductsController do
     
     it "should require logged in user" do
       logout_user
-      get :edit, :id => @product, :product => @attr
+      get :edit, :id => @product
       response.should redirect_to(new_session_path)
     end
     
     it "should be success" do
-      get :edit, :id => @product, :product => @attr
+      get :edit, :id => @product
       response.should render_template('edit')
     end
   end
