@@ -15,6 +15,23 @@ describe ProductsController do
     }
   end
   
+  describe "GET 'edit'" do
+    before(:each) do
+      @product = Product.create(@attr)
+    end
+    
+    it "should require logged in user" do
+      logout_user
+      get :edit, :id => @product, :product => @attr
+      response.should redirect_to(new_session_path)
+    end
+    
+    it "should be success" do
+      get :edit, :id => @product, :product => @attr
+      response.should render_template('edit')
+    end
+  end
+  
   describe "GET 'index'" do
     before(:each) do
       @product = Product.create(@attr)
