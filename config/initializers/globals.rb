@@ -1,4 +1,19 @@
-APP_LONG_NAME = 'Lakeville juniors'
+INHOUSE_LEAGUE_FIRST_SESSION_DATE = '2012-09-29'.to_date
+INHOUSE_LEAGUE_ENTRY_DEADLINE_DATE = '2011-09-23'.to_date
+
+APP_LONG_NAME = "Lakeville Junior Volleyball"
+APP_SHORT_NAME = "Lakeville Juniors"
+APP_HOST_NAME = "lakevillejuniors.com"
+
+INFO_EMAIL_ADDRESS = "lakevillejuniors@gmail.com"
+ADMIN_EMAIL_ADDRESS = "willingham@lakevillejuniors.com"
+OWNER_EMAIL_ADDRESS = "gowillingham@gmail.com"
+
+APP_ADDRESS = [
+  ['21266 Inspiration Path'],
+  ['Lakeville, MN 55044']
+]
+APP_PHONE = '952-431-6341'
 
 SCHOOL_OPTIONS = [
   ['All Saints', 'ASE'], 

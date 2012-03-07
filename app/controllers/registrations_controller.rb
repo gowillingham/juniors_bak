@@ -34,6 +34,7 @@ class RegistrationsController < ApplicationController
     @registration = Registration.new
     @registration.update_attributes(params[:registration])
     if @registration.save
+      UserMailer.customer_notification_for_registration(@registration).deliver
       flash[:success] = 'Your registration has been saved! '
       redirect_to pages_index_url
     else
@@ -43,5 +44,13 @@ class RegistrationsController < ApplicationController
   
   def new
     @registration = Registration.new
+  end
+  
+  # debugging methods ..
+  def confirm
+    @registration = Registration.find(params[:id])
+    UserMailer.customer_notification_for_registration(@registration).deliver
+    flash[:success] = "Ok! Registration email sent [debug]"
+    redirect_to registrations_path
   end
 end

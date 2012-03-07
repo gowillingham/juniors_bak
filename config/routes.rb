@@ -1,8 +1,12 @@
 Juniors::Application.routes.draw do
   resources :users
   resources :sessions, :only => [:new, :create, :destroy]
-  resources :registrations
   resources :products
+  resources :registrations do
+    member do
+      post 'confirm'
+    end
+  end
 
   get 'pages/index'
   get 'pages/about'
