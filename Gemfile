@@ -11,6 +11,7 @@ gem 'autotest-standalone', '4.5.5'
 gem 'autotest-growl', '0.2.9'
 gem 'sorcery'
 gem 'mailcatcher'
+gem 'activemerchant', '1.10.0'
 gem 'rdoc', '~> 3.12'
 
 group :development do

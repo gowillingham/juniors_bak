@@ -16,6 +16,10 @@ GEM
       rack-mount (~> 0.6.12)
       rack-test (~> 0.5.4)
       tzinfo (~> 0.3.23)
+    activemerchant (1.10.0)
+      activesupport (>= 2.3.2)
+      braintree (>= 2.0.0)
+      builder (>= 2.0.0)
     activemodel (3.0.0)
       activesupport (= 3.0.0)
       builder (~> 2.1.2)
@@ -38,6 +42,8 @@ GEM
     autotest-rails-pure (4.1.2)
     autotest-standalone (4.5.5)
     bcrypt-ruby (3.0.1)
+    braintree (2.10.2)
+      builder (>= 2.0.0)
     builder (2.1.2)
     daemons (1.1.8)
     diff-lcs (1.1.3)
@@ -149,6 +155,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activemerchant (= 1.10.0)
   autotest (= 4.4.6)
   autotest-growl (= 0.2.9)
   autotest-rails-pure (= 4.1.2)
