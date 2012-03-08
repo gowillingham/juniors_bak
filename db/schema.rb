@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120308152444) do
+ActiveRecord::Schema.define(:version => 20120308162411) do
 
   create_table "payments", :force => true do |t|
     t.integer  "registration_id"
@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(:version => 20120308152444) do
     t.string   "paypal_payment_status"
     t.string   "paypal_pending_status_reason"
     t.integer  "amount"
-    t.boolean  "online",                       :default => true
+    t.boolean  "online",                       :default => false
     t.boolean  "scholarship",                  :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
