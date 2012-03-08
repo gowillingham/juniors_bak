@@ -1,6 +1,17 @@
 class PaymentsController < ApplicationController
   before_filter :require_login
 
+  def update
+    @payment = Payment.find(params[:id])
+    @payment.update_attributes(params[:payment])
+    if @payment.save
+      flash[:success] = 'The payment was saved'
+      redirect_to registrations_url
+    else
+      render 'edit'
+    end
+  end
+
   def edit
     @registration = Registration.find(params[:registration_id])
     @payment = Payment.find(params[:id])
@@ -20,8 +31,5 @@ class PaymentsController < ApplicationController
   def new
     @registration = Registration.find(params[:registration_id])
     @payment = Payment.new
-  end
-
-  def update
   end
 end

@@ -19,6 +19,29 @@ describe PaymentsController do
     }
   end
   
+  describe "PUT 'update'" do
+    before(:each) do
+      @payment = Payment.create(@attr.merge(:registration_id => @registration.id))
+    end
+
+    it "should require logged in user" do
+      logout_user
+      put :update, :registration_id => @registration, :id => @payment, :payment => @attr
+      response.should redirect_to(new_session_path)
+    end
+    
+    it "should redirect to registrations#index" do
+      put :update, :registration_id => @registration, :id => @payment, :payment => @attr
+      response.should redirect_to(registrations_path)
+      flash[:success].should =~ /saved/i
+    end
+      
+    it "should change the payment given valid attributes" do
+      put :update, :registration_id => @registration, :id => @payment, :payment => @attr.merge(:amount => 100)
+      @payment.reload.amount.should eq(100)
+    end
+  end
+  
   describe "GET 'edit'" do
     before(:each) do
       @payment = Payment.create(@attr.merge(:registration_id => @registration.id))
