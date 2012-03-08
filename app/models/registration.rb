@@ -1,5 +1,6 @@
 class Registration < ActiveRecord::Base
   belongs_to :product
+  has_one :payment
   
   validates :product_id, :presence => true
   validates :first_name, :presence => true

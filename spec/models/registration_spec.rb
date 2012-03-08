@@ -32,9 +32,14 @@ describe Registration do
   end 
   
   describe "methods" do
-    it "should respond to products" do
+    it "should respond to product" do
       registration = Registration.create(@attr)
       registration.should respond_to(:product)
+    end
+    
+    it "should respond to payment" do
+      registration = Registration.create(@attr)
+      registration.should respond_to(:payment)
     end
   end 
   
