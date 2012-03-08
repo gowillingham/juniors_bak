@@ -5,7 +5,7 @@
 		<thead>
 			<tr>
 				<th>Player</th>
-				<th>Email</th>
+				<th>Paid?</th>
 				<th>Sess_id</th>
 				<th></th>
 			</tr>
@@ -14,7 +14,7 @@
 	<% @registrations.each do |registration| %>
 		<tr>
 			<td><%= link_to "#{registration.last_name}, #{registration.first_name}", registration_path(registration) %></td>
-			<td><%= registration.email %></td>
+			<td><%= registration.payment.amount unless registration.payment.nil? %></td>
 			<td><%= registration.product.id %></td>
 			<td class="actions">
 				<%= link_to 'Edit', edit_registration_path(registration) %>

@@ -1,0 +1,43 @@
+<%= form_for [@registration, @payment] do |f| %>
+	<%= render 'shared/errors',  :object => @payment %>
+  <fieldset>
+    <legend>Payment for registration</legend>
+		<table class="first_column_fixed info no_zebra">
+			<tbody>
+				<tr><td>Player:</td><td><%= "#{@registration.last_name}, #{@registration.first_name}" %></td></tr>
+				<tr><td>Parent:</td><td><%= "#{@registration.parent_last_name}, #{@registration.parent_first_name}" %></td></tr>
+				<tr><td>Email:</td><td><%= @registration.email %></td></tr>
+				<tr><td>Session:</td><td><%= @registration.product.name %></td></tr>
+				<tr><td>Price:</td><td><%= @registration.product.price %></td></tr>
+			</tbody>
+		</table>
+		<% unless @payment.id.nil? %>
+		<table class="first_column_fixed info no_zebra">
+			<tbody>
+				<tr><td>Paypal transaction id:</td><td><%= @payment.paypal_txn_id %></td></tr>
+				<tr><td>Paypal payment status:</td><td><%= @payment.paypal_payment_status %></td></tr>
+			</tbody>
+		</table>
+		<% end %>
+		<div class="field">
+		  <%= f.label :amount, 'Payment (in dollars)' %>
+		  <%= f.text_field :amount, :class => 'text small' %>
+		</div>
+		<div class="field">
+			<div class="checkbox">
+				<%= f.check_box :online %>
+				<%= f.label :online, 'Online registration?' %>
+			</div>
+		</div>
+		<div class="field">
+			<div class="checkbox">
+				<%= f.check_box :scholarship %>
+				<%= f.label :scholarship, 'Scholarship?' %>
+			</div>
+		</div>
+		<div class="actions">
+			<%= f.submit 'Save' %>
+			or <%= link_to 'Cancel', registrations_path %>
+		</div>
+	</fieldset>
+<% end %>

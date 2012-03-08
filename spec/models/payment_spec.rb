@@ -9,7 +9,7 @@ describe Payment do
       :paypal_sandbox => false,
       :paypal_payment_status => 'completed',
       :paypal_pending_status_reason => 'echeck',
-      :amount_paid => 70,
+      :amount => 70,
       :online => true,
       :scholarship => false
     }
