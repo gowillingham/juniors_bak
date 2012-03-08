@@ -6,9 +6,7 @@
 			<tr>
 				<th>Player</th>
 				<th>Email</th>
-				<th>Grade</th>
-				<th>School</th>
-				<th>Sess</th>
+				<th>Sess_id</th>
 				<th></th>
 			</tr>
 		</thead>
@@ -17,13 +15,17 @@
 		<tr>
 			<td><%= link_to "#{registration.last_name}, #{registration.first_name}", registration_path(registration) %></td>
 			<td><%= registration.email %></td>
-			<td><%= registration.grade %></td>
-			<td><%= registration.school %></td>
 			<td><%= registration.product.id %></td>
 			<td class="actions">
-				<%= link_to 'Change', edit_registration_path(registration) %>
+				<%= link_to 'Edit', edit_registration_path(registration) %>
 				| <%= link_to 'Remove', registration_path(registration), :confirm => "This registration for #{registration.first_name} #{registration.last_name} will be removed. There is no undo. ", :method => :delete %>
 				| <%= link_to 'Confirm', confirm_registration_path(registration), :method => :post %>
+				|
+				<% if registration.payment.nil? %>
+					<%= link_to 'Payment', new_registration_payment_path(registration) %>
+				<% else %>
+					<%= link_to 'Payment', edit_registration_payment_path(registration, registration.payment) %>
+				<% end %>
 		</tr>
 	<% end %>
 		</tbody>

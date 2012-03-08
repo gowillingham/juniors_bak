@@ -3,6 +3,7 @@ Juniors::Application.routes.draw do
   resources :sessions, :only => [:new, :create, :destroy]
   resources :products
   resources :registrations do
+    resources :payments, :only => [:new, :create, :edit, :update]
     member do
       post 'confirm'
     end
