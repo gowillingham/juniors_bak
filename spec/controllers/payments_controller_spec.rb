@@ -21,7 +21,7 @@ describe PaymentsController do
   
   describe "GET 'paypal'" do
     before(:each) do
-      @payment = Payment.create(@attr.merge(:registration_id => @registration.id))
+      @payment = Payment.create(@attr.merge(:registration_id => @registration.id, :amount => nil))
     end
 
     it "should allow non-authenticated user" do
@@ -43,7 +43,11 @@ describe PaymentsController do
       response.should have_selector('td', :content => @registration.product.price.to_s)
     end 
     
-    it "should redirect to registration#show with message if this payment is already paid"
+    it "should redirect to registration#show with message if this payment is already paid" do
+      @registration.payment.update_attributes(:amount => 70)
+      get :paypal, :registration_id => @registration, :id => @payment
+      response.should redirect_to(registration_path(@registration))
+    end 
   end
   
   describe "PUT 'update'" do

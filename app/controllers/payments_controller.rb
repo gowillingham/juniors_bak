@@ -1,6 +1,7 @@
 class PaymentsController < ApplicationController
   before_filter :require_login, :except => :paypal
-
+  before_filter(:only => :paypal) { require_unpaid_registrations params[:id] }
+  
   def paypal
     @registration = Registration.find(params[:registration_id])
   end
@@ -36,4 +37,14 @@ class PaymentsController < ApplicationController
     @registration = Registration.find(params[:registration_id])
     @payment = Payment.new
   end
+  
+  private
+  
+    def require_unpaid_registrations(payment_id)
+      payment = Payment.find(payment_id)
+      if payment.paid?
+        flash[:info] = 'The registration has already been paid '
+        redirect_to registration_url(payment.registration)
+      end
+    end
 end

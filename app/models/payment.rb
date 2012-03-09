@@ -7,10 +7,12 @@ class Payment < ActiveRecord::Base
     if scholarship
       true
     else
-      if (amount > 0)
-        true
-      else
+      if amount.nil?
         false
+      elsif amount == 0
+        false
+      else
+        true
       end
     end
   end
