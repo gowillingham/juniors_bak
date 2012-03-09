@@ -91,6 +91,8 @@ describe RegistrationsController do
       response.should have_selector("td", :content => "#{@registration.last_name}, #{@registration.first_name}")
       response.should have_selector("td", :content => @registration.email)
     end
+    
+    it "should show different view for logged in user"
   end
   
   describe "DELETE 'destroy'" do
@@ -133,15 +135,16 @@ describe RegistrationsController do
       end.should change(Registration, :count).by(0)
     end
     
-    it "should redirect with flash message for a valid registration" do
+    it "should redirect to payment#paypal with flash message for a valid registration" do
       post :create, :registration => @attr
-      response.should redirect_to(pages_index_path)
+      registration = Registration.find_by_email(@attr[:email])
+      response.should redirect_to(paypal_registration_payment_path(assigns(:registration), assigns(:registration).payment))
     end
     
     it "should not require a logged in user" do
       logout_user
       post :create, :registration => @attr
-      response.should redirect_to(pages_index_path)
+      response.should redirect_to(paypal_registration_payment_path(assigns(:registration), assigns(:registration).payment))
     end
   end 
   

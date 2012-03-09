@@ -30,9 +30,20 @@ describe PaymentsController do
       response.should render_template('paypal')
     end
     
-    it "should display paypal form"
-    it "should display the registration summary" 
-    it "should redirect with message if this payment is already paid"
+    it "should display paypal form" do
+      get :paypal, :registration_id => @registration, :id => @payment
+      response.should have_selector('form', :action => 'https://www.sandbox.paypal.com/cgi-bin/webscr')
+    end 
+    
+    it "should display the registration summary" do
+      get :paypal, :registration_id => @registration, :id => @payment
+      response.should have_selector('td', :content => @registration.last_name)
+      response.should have_selector('td', :content => @registration.first_name)
+      response.should have_selector('td', :content => @registration.product.name)
+      response.should have_selector('td', :content => @registration.product.price.to_s)
+    end 
+    
+    it "should redirect to registration#show with message if this payment is already paid"
   end
   
   describe "PUT 'update'" do

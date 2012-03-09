@@ -34,9 +34,10 @@ class RegistrationsController < ApplicationController
     @registration = Registration.new
     @registration.update_attributes(params[:registration])
     if @registration.save
+      @registration.payment = Payment.create(:registration_id => @registration.id)
       UserMailer.customer_notification_for_registration(@registration).deliver
       flash[:success] = 'Your registration has been saved! '
-      redirect_to pages_index_url
+      redirect_to paypal_registration_payment_url(@registration, @registration.payment)
     else
       render 'new'
     end

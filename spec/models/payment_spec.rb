@@ -28,6 +28,31 @@ describe Payment do
   end
   
   describe "methods" do
+    it "should respond to paid?" do
+      Payment.create(@attr).should respond_to(:paid?)
+    end
+    
+    describe "paid" do
+      it "should be true if scholarship is true or the payment amount is greater than zero" do
+        payment = Payment.create(@attr)
+        payment.paid?.should be_true
+        
+        payment.amount = nil
+        payment.scholarship = true
+        payment.save
+        payment.paid?.should be_true
+        
+        payment.amount = 0
+        payment.scholarship = true
+        payment.save
+        payment.paid?.should be_true
+        
+        payment.scholarship = false
+        payment.save
+        payment.paid?.should_not be_true
+      end
+    end
+    
     it "should respond to registration" do
       payment = Payment.create(@attr)
       payment.should respond_to(:registration)
