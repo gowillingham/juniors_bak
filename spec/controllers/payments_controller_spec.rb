@@ -19,6 +19,22 @@ describe PaymentsController do
     }
   end
   
+  describe "GET 'paypal'" do
+    before(:each) do
+      @payment = Payment.create(@attr.merge(:registration_id => @registration.id))
+    end
+
+    it "should allow non-authenticated user" do
+      logout_user
+      get :paypal, :registration_id => @registration, :id => @payment
+      response.should render_template('paypal')
+    end
+    
+    it "should display paypal form"
+    it "should display the registration summary" 
+    it "should redirect with message if this payment is already paid"
+  end
+  
   describe "PUT 'update'" do
     before(:each) do
       @payment = Payment.create(@attr.merge(:registration_id => @registration.id))

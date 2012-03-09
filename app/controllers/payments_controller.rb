@@ -1,6 +1,10 @@
 class PaymentsController < ApplicationController
-  before_filter :require_login
+  before_filter :require_login, :except => :paypal
 
+  def paypal
+    @registration = Registration.find(params[:registration_id])
+  end
+  
   def update
     @payment = Payment.find(params[:id])
     @payment.update_attributes(params[:payment])

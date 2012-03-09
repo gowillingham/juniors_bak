@@ -3,7 +3,11 @@ Juniors::Application.routes.draw do
   resources :sessions, :only => [:new, :create, :destroy]
   resources :products
   resources :registrations do
-    resources :payments, :only => [:new, :create, :edit, :update]
+    resources :payments, :only => [:new, :create, :edit, :update] do
+      member do
+        get 'paypal'
+      end
+    end
     member do
       post 'confirm'
     end
