@@ -1,26 +1,48 @@
 <h1>Confirm your payment</h1>
 
-<div class="info paypal round">
-	<%= image_tag 'check_icon.png', :class => :image %>
-	<h3>Thanks! You are almost there .. </h3>
-	<div class="legend">
-		Thank you for your registration!
-		When you click 'Pay now' below,
-		you will be taken to the safe and secure Paypal payment gateway where you may make payment with a credit card.  
-		(you will not need a Paypal account to complete your registration). 
+<% payment_service_for @registration.payment.id, PAYPAL_ACCOUNT, :amount => @registration.product.price,
+    :currency => 'USD', :service => :paypal do |service|
+
+    service.customer :first_name => @registration.first_name,
+        :last_name => @registration.last_name,
+        :phone => @registration.phone,
+        :email => @registration.email
+    service.billing_address :city => @registration.city,
+        :address1 => @registration.address,
+        :state => @registration.state,
+        :country => 'USA',
+        :zip => @registration.zip
+    service.item_name "#{@registration.product.name} Payment"
+    service.invoice @registration.id
+    service.tax '0.00'
+    service.notify_url url_for(:only_path => false, :controller => 'payments', :action => 'ipn')
+    service.return_url registration_url(@registration.id)
+    service.cancel_return_url url_for(:only_path => false,
+        :controller => 'pages', :action => 'index') %>
+
+
+	<div class="info paypal round">
+		<%= image_tag 'check_icon.png', :class => :image %>
+		<h3>Thanks! You are almost there .. </h3>
+		<div class="legend">
+			Thank you for your registration!
+			When you click 'Pay now' below,
+			you will be taken to the safe and secure Paypal payment gateway where you may make payment with a credit card.  
+			(you will not need a Paypal account to complete your registration). 
+		</div>
+		<table class="no_zebra">
+			<tbody>
+				<tr>
+					<td class="item"><%= @registration.product.name %></td>
+					<td class="price"><%= "$#{@registration.product.price}.00" %></td>
+					<td class="actions">
+						<%= submit_tag 'Pay now with PayPal' %>
+						or <%= link_to 'Cancel', new_registration_path %>
+					</td>
+			</tbody>
+		</table>
 	</div>
-	<table class="no_zebra">
-		<tbody>
-			<tr>
-				<td class="item"><%= @registration.product.name %></td>
-				<td class="price"><%= "$#{@registration.product.price}.00" %></td>
-				<td class="actions">
-					<%= submit_tag 'Pay now with PayPal' %>
-					or <%= link_to 'Cancel', new_registration_path %>
-				</td>
-		</tbody>
-	</table>
-</div>
+<% end %>
 
 <table class="first_column_fixed">
 	<tbody>
