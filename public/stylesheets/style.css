@@ -75,6 +75,8 @@ select.text 																								{padding:4px;border-color:#bbb;}
 td.actions		{width:1%;white-space:nowrap;}
 
 /* <-- highlight selected navigation tab --> */
+.sessions #navigation a.logout,
+.sessions #navigation a.login,
 .payments #navigation a.register,
 .registrations #navigation a.register,
 .pages.contact #navigation a.contact,

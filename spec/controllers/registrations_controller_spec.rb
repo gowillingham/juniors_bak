@@ -4,7 +4,7 @@ describe RegistrationsController do
   render_views
   
   before(:each) do
-    @user = User.create(:email => 'email@gmail.com', :password => 'p', :password_confirmation => 'p')
+    @user = Factory(:user)
     login_user
     
     @product = Product.create(:name => 'session 1', :price => 7000)
@@ -80,19 +80,50 @@ describe RegistrationsController do
   end
   
   describe "GET 'show'" do
-    it "should require logged in user" do
-      logout_user
-      get :show, :id => @registration
-      response.should redirect_to(new_session_path)
+    before(:each) do
+      @registration.create_payment
     end
     
-    it "should display information for the selected user" do
+    it "should allow non-authenticated user" do
       get :show, :id => @registration
-      response.should have_selector("td", :content => "#{@registration.last_name}, #{@registration.first_name}")
-      response.should have_selector("td", :content => @registration.email)
+      response.should render_template('show')
     end
     
-    it "should show different view for logged in user"
+    describe "for logged in user" do
+      it "should display the actions link bar" do
+        get :show, :id => @registration
+        response.should have_selector("a", :content => "Remove")
+      end
+      
+      it "should display registration and payment details" do
+        get :show, :id => @registration
+        response.should have_selector("td", :content => "#{@registration.last_name}, #{@registration.first_name}")
+        response.should have_selector("td", :content => @registration.email)
+        response.should have_selector("td", :content => "Paypal")
+      end      
+    end
+    
+    describe "for the non-authenticated user" do
+      before(:each) do
+        logout_user
+      end
+      
+      it "should display registration and payment details" do
+        get :show, :id => @registration
+        response.should have_selector("td", :content => "#{@registration.last_name}, #{@registration.first_name}")
+        response.should have_selector("td", :content => @registration.email)
+      end
+      
+      it "should not display certain registration and payment details" do
+        get :show, :id => @registration
+        response.should_not have_selector("td", :content => "Paypal")
+      end
+      
+      it "should not display the admin linkbar" do
+        get :show, :id => @registration
+        response.should_not have_selector("a", :content => "Remove")
+      end      
+    end
   end
   
   describe "DELETE 'destroy'" do

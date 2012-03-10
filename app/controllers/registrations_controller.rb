@@ -1,5 +1,5 @@
 class RegistrationsController < ApplicationController
-  before_filter :require_login, :except => [:create, :new]
+  before_filter :require_login, :except => [:create, :new, :show]
   
   def update
     @registration = Registration.find(params[:id])

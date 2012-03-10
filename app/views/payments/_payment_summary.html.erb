@@ -1,0 +1,9 @@
+<% unless @registration.payment.nil? %>
+<table class="first_column_fixed info no_zebra">
+	<tbody>
+		<tr><td>Paypal transaction id:</td><td><%= @registration.payment.paypal_txn_id %></td></tr>
+		<tr><td>Paypal payment status:</td><td><%= @registration.payment.paypal_payment_status %></td></tr>
+		<tr><td>Paypal pending status reason:</td><td><%= @registration.payment.paypal_pending_status_reason %></td></tr>
+	</tbody>
+</table>
+<% end %>

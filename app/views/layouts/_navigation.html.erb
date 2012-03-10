@@ -6,9 +6,9 @@
   <li><%= link_to "Contact us", pages_contact_path, :class => "contact" %></li>
   <li>
 		<% if current_user %>
-			<%= link_to "Sign out", session_path(current_user), :method => :delete, :class => "contact last" %>
+			<%= link_to "Sign out", session_path(current_user), :method => :delete, :class => "logout last" %>
 		<% else %>
-			<%= link_to "Sign in", new_session_path, :class => "contact last" %>
+			<%= link_to "Sign in", new_session_path, :class => "login last" %>
 		<% end %>
 	</li>
 </ul>

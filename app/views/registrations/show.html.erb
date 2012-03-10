@@ -1,10 +1,13 @@
 <h1>Registration for <%= "#{@registration.first_name} #{@registration.last_name}" %></h1>
 
-<p>
-	<%= link_to 'Back to registrations', registrations_path %>
-	| <%= link_to 'Change', edit_registration_path(@registration) %>
-	| <%= link_to 'Remove', registration_path(@registration), :confirm => "This registration for #{@registration.first_name} #{@registration.last_name} will be removed. There is no undo. ", :method => :delete %>
-</p>
+<% if logged_in? %>
+	<p>
+		<%= link_to 'Back to registrations', registrations_path %>
+		| <%= link_to 'Change', edit_registration_path(@registration) %>
+		| <%= link_to 'Remove', registration_path(@registration), :confirm => "This registration for #{@registration.first_name} #{@registration.last_name} will be removed. There is no undo. ", :method => :delete %>
+	</p>
+	<%= render 'payments/payment_summary' %>
+<% end %>
 <table class="first_column_fixed">
 	<tbody>
 		<tr>
@@ -71,9 +74,11 @@
 			<td>Notes: </td>
 			<td><%= @registration.note %></td>
 		</tr>
-		<tr>
-			<td>Created at: </td>
-			<td><%= @registration.created_at.strftime("%a %b %d, %Y at %I:%M %p") %></td>
-		</tr>
+		<% if logged_in? %>
+			<tr>
+				<td>Created at: </td>
+				<td><%= @registration.created_at.strftime("%a %b %d, %Y at %I:%M %p") %></td>
+			</tr>
+		<% end %>
 	</tbody>
 </table>
