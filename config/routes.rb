@@ -6,13 +6,14 @@ Juniors::Application.routes.draw do
     resources :payments, :only => [:new, :create, :edit, :update] do
       member do
         get 'paypal'
-        put 'ipn'
       end
     end
     member do
       post 'confirm'
     end
   end
+  
+  put 'payments/ipn', :to => 'payments#ipn'
 
   get 'pages/index'
   get 'pages/about'

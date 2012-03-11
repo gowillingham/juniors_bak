@@ -6,8 +6,9 @@ unless Rails.env == 'production'
   PAYPAL_ACCOUNT = 'willin_1248207716_biz@lakevillejuniors.com'
   ActiveMerchant::Billing::Base.mode = :test
 else
-  PAYPAL_ACCOUNT = 'info@lakevillejuniors.com'
-  #ActiveMerchant::Billing::Base.mode = :test
+  # PAYPAL_ACCOUNT = 'info@lakevillejuniors.com'
+  PAYPAL_ACCOUNT = 'willin_1248207716_biz@lakevillejuniors.com'
+  ActiveMerchant::Billing::Base.mode = :test
 end
 
 # required for active_merchant
