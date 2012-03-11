@@ -1,7 +1,7 @@
 class PaymentsController < ApplicationController
   include ActiveMerchant::Billing::Integrations
 
-  before_filter :require_login, :except => :paypal
+  before_filter :require_login, :except => [:paypal, :ipn]
   before_filter(:only => :paypal) { require_unpaid_registrations params[:id] }
   skip_before_filter :protect_from_forgery, :except => [:ipn]
   
@@ -9,8 +9,8 @@ class PaymentsController < ApplicationController
       notify = Paypal::Notification.new(request.raw_post)
       notify.acknowledge
       
-      registration = Registration.find(notify.item_id)
-
+      # registration = Registration.find(notify.item_id)
+      # 
       # if notify.acknowledge
       #   begin
       # 
