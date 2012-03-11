@@ -3,7 +3,7 @@ class PaymentsController < ApplicationController
 
   before_filter :require_login, :except => [:paypal, :ipn]
   before_filter(:only => :paypal) { require_unpaid_registrations params[:id] }
-  skip_before_filter :protect_from_forgery, :except => [:ipn]
+  skip_before_filter :verify_authenticity_token, :only => :ipn
   
   def ipn
       # notify = Paypal::Notification.new(request.raw_post)
