@@ -6,9 +6,9 @@ class PaymentsController < ApplicationController
   skip_before_filter :protect_from_forgery, :except => [:ipn]
   
   def ipn
-      notify = Paypal::Notification.new(request.raw_post)
-      notify.acknowledge
-      
+      # notify = Paypal::Notification.new(request.raw_post)
+      # notify.acknowledge
+      # 
       # registration = Registration.find(notify.item_id)
       # 
       # if notify.acknowledge
