@@ -2,8 +2,9 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.0'
 gem 'rake', '0.9.2'
+gem 'heroku'
 
-gem 'sqlite3', :require => 'sqlite3'
+gem 'sqlite3', :require => 'sqlite3', :group => :development
 
 gem 'autotest', '4.4.6'
 gem 'autotest-rails-pure', '4.1.2'
