@@ -1,29 +1,31 @@
 source 'http://rubygems.org'
 
+gem 'heroku'
 gem 'rails', '3.0'
 gem 'rake', '0.9.2'
-gem 'heroku'
 
 gem 'sqlite3', :require => 'sqlite3', :group => :development
 
-gem 'autotest', '4.4.6'
-gem 'autotest-rails-pure', '4.1.2'
-gem 'autotest-standalone', '4.5.5'
-gem 'autotest-growl', '0.2.9'
 gem 'sorcery'
 gem 'mailcatcher'
 gem 'activemerchant', '1.10.0'
 gem 'rdoc', '~> 3.12'
 
 group :development do
+  gem 'autotest', '4.4.6'
+  gem 'autotest-rails-pure', '4.1.2'
+  gem 'autotest-standalone', '4.5.5'
+  gem 'autotest-growl', '0.2.9'
   gem 'rspec-rails', '2.5.0'
   gem 'faker', '0.9.5'
+  gem 'ZenTest', '4.5.0'
 end
 
 group :test do
   gem 'rspec', '2.5.0'
   gem 'webrat', '0.7.3'
   gem 'factory_girl_rails', '1.0.1'
+  gem 'ZenTest', '4.5.0'
 end 
 
 

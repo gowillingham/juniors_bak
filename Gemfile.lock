@@ -1,7 +1,7 @@
 GEM
   remote: http://rubygems.org/
   specs:
-    ZenTest (4.6.2)
+    ZenTest (4.5.0)
     abstract (1.0.0)
     actionmailer (3.0.0)
       actionpack (= 3.0.0)
@@ -42,7 +42,7 @@ GEM
     autotest-rails-pure (4.1.2)
     autotest-standalone (4.5.5)
     bcrypt-ruby (3.0.1)
-    braintree (2.10.2)
+    braintree (2.14.0)
       builder (>= 2.0.0)
     builder (2.1.2)
     daemons (1.1.8)
@@ -88,7 +88,7 @@ GEM
     mime-types (1.17.2)
     multi_json (1.1.0)
     multipart-post (1.1.5)
-    nokogiri (1.5.0)
+    nokogiri (1.5.2)
     oauth (0.4.5)
     oauth2 (0.5.2)
       faraday (~> 0.7)
@@ -133,16 +133,15 @@ GEM
     rubyzip (0.9.6.1)
     sinatra (1.2.8)
       rack (~> 1.1)
-      tilt (>= 1.2.2, < 2.0)
+      tilt (< 2.0, >= 1.2.2)
     skinny (0.2.0)
       eventmachine (~> 0.12)
       thin (~> 1.2)
-    sorcery (0.7.6)
+    sorcery (0.7.7)
       bcrypt-ruby (~> 3.0.0)
       oauth (~> 0.4.4)
-      oauth (~> 0.4.4)
       oauth2 (~> 0.5.1)
-      oauth2 (~> 0.5.1)
+      sorcery
     sqlite3 (1.3.5)
     sqlite3-ruby (1.3.3)
       sqlite3 (>= 1.3.3)
@@ -156,7 +155,7 @@ GEM
     treetop (1.4.10)
       polyglot
       polyglot (>= 0.3.1)
-    tzinfo (0.3.31)
+    tzinfo (0.3.32)
     webrat (0.7.3)
       nokogiri (>= 1.2.0)
       rack (>= 1.0)
@@ -166,6 +165,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  ZenTest (= 4.5.0)
   activemerchant (= 1.10.0)
   autotest (= 4.4.6)
   autotest-growl (= 0.2.9)
