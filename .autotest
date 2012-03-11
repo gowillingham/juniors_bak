@@ -1,1 +1,4 @@
 require "autotest/growl"
+
+# keeps console from clearing each time new test is run
+Autotest::Growl::clear_terminal = false
