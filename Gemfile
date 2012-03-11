@@ -3,6 +3,7 @@ source 'http://rubygems.org'
 gem 'heroku'
 gem 'rails', '3.0'
 gem 'rake', '0.9.2'
+gem 'faker', '0.9.5'
 
 gem 'sqlite3', :require => 'sqlite3', :group => :development
 
@@ -17,7 +18,6 @@ group :development do
   gem 'autotest-standalone', '4.5.5'
   gem 'autotest-growl', '0.2.9'
   gem 'rspec-rails', '2.5.0'
-  gem 'faker', '0.9.5'
   gem 'ZenTest', '4.5.0'
 end
 
