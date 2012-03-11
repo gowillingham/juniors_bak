@@ -1,6 +1,37 @@
 class PaymentsController < ApplicationController
+  include ActiveMerchant::Billing::Integrations
+
   before_filter :require_login, :except => :paypal
   before_filter(:only => :paypal) { require_unpaid_registrations params[:id] }
+  
+  def ipn
+      notify = Paypal::Notification.new(request.raw_post)
+
+      registration = Registration.find(notify.item_id)
+
+      if notify.acknowledge
+        begin
+
+          if notify.complete? and registration.product.price == notify.amount
+            registration.payment.paypal_transaction_id = notify.txn_id
+            registration.payment.paypal_payment_status = notify.payment_status
+            registration.payment.paypal_pending_status_reason = notifiy.pending_reason
+            registration.payment.amount = notify.amount
+          else
+            # log error failed to verify with paypal's notification: needs investigation
+          end
+
+        rescue => e
+          raise
+        ensure
+          registration.payment.save
+        end
+      else
+        # log transaction was not acknowledged
+      end
+
+    render :nothing => true
+  end
   
   def paypal
     @registration = Registration.find(params[:registration_id])

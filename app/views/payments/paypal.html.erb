@@ -1,6 +1,6 @@
 <h1>Confirm your payment</h1>
 
-<% payment_service_for @registration.payment.id, PAYPAL_ACCOUNT, :amount => @registration.product.price,
+<% payment_service_for @registration.id, PAYPAL_ACCOUNT, :amount => @registration.product.price,
     :currency => 'USD', :service => :paypal do |service|
 
     service.customer :first_name => @registration.first_name,
