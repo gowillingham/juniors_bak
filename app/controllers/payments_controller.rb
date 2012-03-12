@@ -6,8 +6,8 @@ class PaymentsController < ApplicationController
   skip_before_filter :verify_authenticity_token, :only => :ipn
   
   def ipn
-      # notify = Paypal::Notification.new(request.raw_post)
-      # notify.acknowledge
+      notify = Paypal::Notification.new(request.raw_post)
+      notify.acknowledge
       # 
       # registration = Registration.find(notify.item_id)
       # 
