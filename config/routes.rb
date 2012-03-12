@@ -14,6 +14,7 @@ Juniors::Application.routes.draw do
   end
   
   post 'payments/ipn', :to => 'payments#ipn'
+  get 'payments/test', :to => 'payments#test'
 
   get 'pages/index'
   get 'pages/about'

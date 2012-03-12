@@ -5,6 +5,10 @@ class PaymentsController < ApplicationController
   before_filter(:only => :paypal) { require_unpaid_registrations params[:id] }
   skip_before_filter :verify_authenticity_token, :only => :ipn
   
+  def test
+    
+  end
+  
   def ipn
       notify = Paypal::Notification.new(request.raw_post)
       notify.acknowledge
