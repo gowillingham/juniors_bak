@@ -4,6 +4,18 @@ Juniors::Application.configure do
   # The production environment is meant for finished, "live" apps.
   # Code is not reloaded between requests
   config.cache_classes = true
+  
+  # my email settings for gmail ..
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :address          => "smtp.gmail.com",
+    :port             => 587,
+    :domain           => "lakevillejuniors.com",
+    :authentication   => "plain",
+    :user_name        => "lakevillejuniors@gmail.com",
+    :password         => "reneepaul",
+    :enable_starttles => true
+  }  
 
   # Full error reports are disabled and caching is turned on
   config.consider_all_requests_local       = false
