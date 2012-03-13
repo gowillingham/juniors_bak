@@ -5,36 +5,29 @@ class PaymentsController < ApplicationController
   before_filter(:only => :paypal) { require_unpaid_registrations params[:id] }
   skip_before_filter :verify_authenticity_token, :only => :ipn
   
-  def test
+  def ipn    
+    paypal_notification = PaypalNotification.new(params)
+    registration = Registration.find(paypal_notification.item_id)
     
-  end
-  
-  def ipn
-      notify = Paypal::Notification.new(request.raw_post)
-      notify.acknowledge
-      # 
-      # registration = Registration.find(notify.item_id)
-      # 
-      # if notify.acknowledge
-      #   begin
-      # 
-      #     if notify.complete? and registration.product.price == notify.amount
-      #       registration.payment.paypal_transaction_id = notify.txn_id
-      #       registration.payment.paypal_payment_status = notify.payment_status
-      #       registration.payment.paypal_pending_status_reason = notifiy.pending_reason
-      #       registration.payment.amount = notify.amount
-      #     else
-      #       # log error failed to verify with paypal's notification: needs investigation
-      #     end
-      # 
-      #   rescue => e
-      #     raise
-      #   ensure
-      #     registration.payment.save
-      #   end
-      # else
-      #   # log transaction was not acknowledged
-      # end
+    if paypal_notification.acknowledge
+      begin
+        if paypal_notification.complete? && (registration.product.price == paypal_notification.gross)
+          registration.payment.paypal_txn_id = paypal_notification.txn_id
+          registration.payment.paypal_payment_status = paypal_notification.status
+          registration.payment.paypal_pending_status_reason = paypal_notification.pending_reason
+          registration.payment.amount = paypal_notification.gross
+          registration.payment.online = true
+        else
+          # log incomplete or tampered transaction
+        end
+      rescue => e
+        raise 
+      ensure
+        registration.payment.save
+      end
+    else
+      # log unacknowledged transaction ..
+    end
 
     render :nothing => true
   end

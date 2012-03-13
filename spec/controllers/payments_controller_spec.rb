@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'mocks/paypal_notification'
 
 describe PaymentsController do
   render_views
@@ -8,15 +9,82 @@ describe PaymentsController do
     login_user @user
     
     @registration = Factory(:registration)
+    @registration.product.update_attribute(:price, 70)
     @attr = {
       :paypal_txn_id => 'txn_id',
       :paypal_sandbox => false,
-      :paypal_payment_status => 'completed',
+      :paypal_payment_status => 'Completed',
       :paypal_pending_status_reason => 'echeck',
       :amount => 70,
       :online => false,
       :scholarship => false
     }
+  end
+  
+  describe "POST 'ipn'" do
+    
+    # todo: add to Payment model
+    # ------------
+    # paypal_txn_type
+    # paypal_payment_type
+    # paypal_verify_sign
+    # paypal_payer_status
+    # paypal_mc_fee
+    
+    
+    
+    before(:each) do
+      @payment = Payment.create(:registration_id => @registration.id)
+      
+      @trans_id = "16F08736TA389152H"
+      @ipn_params = {"payment_date" => "04:33:33 Oct 13.2007+PDT" ,
+        :txn_type => "web_accept",
+        :last_name => @registration.last_name,
+        :first_name => @registration.first_name,
+        :payer_email => @registration.email,
+        :item_name => @registration.product.name,
+        :item_number => @registration.id,
+        :custom => @registration.id,
+        :mc_gross => @registration.product.price,
+        :business => PAYPAL_ACCOUNT,
+        :receiver_email => PAYPAL_ACCOUNT,
+        :residence_country => "US",
+        :mc_currency => "USD",
+        :payment_type => "instant",
+        :verify_sign => "AZQLcOZ7B.YM2m-QDAXOrQQcLFYuA0N0XoC3zadaGhkGNF2nlRWmpzlI",
+        :payer_status => "verified",
+        :test_ipn => "1",
+        :tax => "0.00",
+        :txn_id => @trans_id,
+        :invoice => nil,
+        :payment_status => "Completed",
+        :mc_fee => "5.52",
+        :charset => "windows-1252",
+        :notify_version => "2.4"
+      }
+    end
+    
+    it "should be success" do
+      post :ipn, @ipn_params
+      response.should be_success 
+    end
+    
+    describe "that are acknowledged" do
+      it "should update the payment" do
+        post :ipn, @ipn_params
+        @registration.reload.payment.amount.should eq(@ipn_params[:mc_gross])
+      end
+      
+      it "should not update the amount for payment_status 'pending', 'failed'" do
+        post :ipn, @ipn_params
+        @registration.reload.payment.amount.should eq(@ipn_params[:mc_gross])        
+      end
+    end
+    
+    describe "that are not acknowledged" do
+      it "should not update the payment"
+      it "should log the transaction details"
+    end
   end
   
   describe "GET 'paypal'" do
