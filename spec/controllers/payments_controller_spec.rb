@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'mocks/paypal_notification'
 
 describe PaymentsController do
   render_views
