@@ -12,7 +12,7 @@ class PaymentsController < ApplicationController
       begin 
         if !notify.complete?
           Rails.logger.info "PAYPAL_ERROR: transaction did not return 'Completed'"
-        elsif registration.product.price != notify.gross
+        elsif registration.product.price.to_s != notify.gross.to_s
           Rails.logger.info "PAYPAL_ERROR: registration.product.price:#{registration.product.price} <> mc_gross:#{notify.gross} returned by paypal"
         else
           registration.payment.paypal_txn_id = notify.transaction_id
