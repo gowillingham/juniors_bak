@@ -36,7 +36,7 @@ describe PaymentsController do
       @payment = Payment.create(:registration_id => @registration.id)
       
       @trans_id = "16F08736TA389152H"
-      @ipn_params = {"payment_date" => "04:33:33 Oct 13.2007+PDT" ,
+      @ipn_params = {"payment_date" => "04:33:33 Oct 13.2007+PDT",
         :txn_type => "web_accept",
         :last_name => @registration.last_name,
         :first_name => @registration.first_name,
@@ -69,15 +69,8 @@ describe PaymentsController do
     end
     
     describe "that are acknowledged" do
-      it "should update the payment" do
-        post :ipn, @ipn_params
-        @registration.reload.payment.amount.should eq(@ipn_params[:mc_gross])
-      end
-      
-      it "should not update the amount for payment_status 'pending', 'failed'" do
-        post :ipn, @ipn_params
-        @registration.reload.payment.amount.should eq(@ipn_params[:mc_gross])        
-      end
+      it "should update the payment" 
+      it "should not update the amount for payment_status 'Pending', 'Failed'"
     end
     
     describe "that are not acknowledged" do
