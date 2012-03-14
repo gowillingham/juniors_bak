@@ -13,7 +13,7 @@ class PaymentsController < ApplicationController
         if !(params[:payment_status] == 'Completed')
           Rails.logger.info "PAYPAL_ERROR: transaction did not return 'Completed'"
         elsif registration.product.price.to_s != params[:mc_gross]
-          Rails.logger.info "PAYPAL_ERROR: registration.product.price:#{registration.product.price} <> mc_gross:#{notify.gross} returned by paypal"
+          Rails.logger.info "PAYPAL_ERROR: registration.product.price:#{registration.product.price} <> mc_gross:#{params[:mc_gross]} returned by paypal"
         else
           registration.payment.paypal_txn_id = params[:txn_id]
           registration.payment.paypal_payment_status = params[:payment_status]
@@ -22,13 +22,11 @@ class PaymentsController < ApplicationController
           registration.payment.online = true
         end
       rescue => e
-        # there's a bug
         Rails.logger.info "PAYPAL_ERROR: an exception was thrown after notify.acknowledge."
       ensure
         registration.payment.save
       end
     else
-      # log unacknowledged transaction ..
       Rails.logger.info "PAYPAL_ERROR: this transaction was not acknowleged by paypal"
     end
     
