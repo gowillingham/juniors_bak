@@ -10,22 +10,26 @@ class PaymentsController < ApplicationController
     registration = Registration.find(notify.item_id)
     if notify.acknowledge 
       begin 
-        if notify.complete? && (registration.product.price == notify.gross)
+        if !notify.complete?
+          Rails.logger.info "PAYPAL_ERROR: transaction did not return 'Completed'"
+        elsif registration.product.price != notify.gross
+          Rails.logger.info "PAYPAL_ERROR: registration.product.price:#{registration.product.price} <> mc_gross:#{notify.gross} returned by paypal"
+        else
           registration.payment.paypal_txn_id = notify.transaction_id
           registration.payment.paypal_payment_status = notify.status
           registration.payment.paypal_pending_status_reason = params[:pending_reason]
           registration.payment.amount = notify.gross
           registration.payment.online = true
-        else
-          # log incomplete or tampered transaction .. 
         end
       rescue => e
         # there's a bug
+        Rails.logger.info "PAYPAL_ERROR: an exception was thrown after notify.acknowledge."
       ensure
         registration.payment.save
       end
     else
       # log unacknowledged transaction ..
+      Rails.logger.info "PAYPAL_ERROR: this transaction was not acknowleged by paypal"
     end
     
     render :nothing => true
