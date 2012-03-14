@@ -64,18 +64,11 @@ describe PaymentsController do
     end
     
     it "should be success" do
+      # testing for functionality of this action has been moved to the model
+      # where the activemerchant dependency can be mocked/stubbed
+      
       post :ipn, @ipn_params
       response.should be_success 
-    end
-    
-    describe "that are acknowledged" do
-      it "should update the payment" 
-      it "should not update the amount for payment_status 'Pending', 'Failed'"
-    end
-    
-    describe "that are not acknowledged" do
-      it "should not update the payment"
-      it "should log the transaction details"
     end
   end
   

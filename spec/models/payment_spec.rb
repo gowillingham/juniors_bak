@@ -28,6 +28,18 @@ describe Payment do
   end
   
   describe "methods" do
+    it "should respond to receive_paypal_payment"
+    describe "receive_paypal_payment" do
+      context "when acknowledged by paypal" do
+        it "should update the payment when payment_status is 'Complete'" 
+        it "should not update the amount for payment_status 'Pending', 'Failed'"
+      end
+      context "when not acknowledged by paypal" do
+        it "should not update the payment"
+        it "should log the transaction details"
+      end
+    end
+    
     it "should respond to paid?" do
       Payment.create(@attr).should respond_to(:paid?)
     end
