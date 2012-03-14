@@ -12,7 +12,7 @@ class PaymentsController < ApplicationController
       begin 
         if !(params[:payment_status] == 'Completed')
           Rails.logger.info "PAYPAL_ERROR: transaction did not return 'Completed'"
-        elsif registration.product.price.to_s != params[:mc_gross]
+        elsif "#{registration.product.price}.00" != params[:mc_gross]
           Rails.logger.info "PAYPAL_ERROR: registration.product.price:#{registration.product.price} <> mc_gross:#{params[:mc_gross]} returned by paypal"
         else
           registration.payment.paypal_txn_id = params[:txn_id]
