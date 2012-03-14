@@ -7,18 +7,18 @@ class PaymentsController < ApplicationController
   
   def ipn   
     notify = Paypal::Notification.new(request.raw_post) 
-    registration = Registration.find(notify.item_id)
-    if notify.acknowledge 
+    registration = Registration.find(params[:item_number])
+    if notify.acknowledge
       begin 
-        if !notify.complete?
+        if !(params[:payment_status] == 'Completed')
           Rails.logger.info "PAYPAL_ERROR: transaction did not return 'Completed'"
-        elsif registration.product.price.to_s != notify.gross.to_s
+        elsif registration.product.price.to_s != params[:mc_gross]
           Rails.logger.info "PAYPAL_ERROR: registration.product.price:#{registration.product.price} <> mc_gross:#{notify.gross} returned by paypal"
         else
-          registration.payment.paypal_txn_id = notify.transaction_id
-          registration.payment.paypal_payment_status = notify.status
+          registration.payment.paypal_txn_id = params[:txn_id]
+          registration.payment.paypal_payment_status = params[:payment_status]
           registration.payment.paypal_pending_status_reason = params[:pending_reason]
-          registration.payment.amount = notify.gross
+          registration.payment.amount = params[:mc_gross]
           registration.payment.online = true
         end
       rescue => e
