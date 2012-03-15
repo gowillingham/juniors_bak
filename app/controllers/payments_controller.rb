@@ -7,28 +7,9 @@ class PaymentsController < ApplicationController
   
   def ipn   
     notify = Paypal::Notification.new(request.raw_post) 
+    
     registration = Registration.find(params[:item_number])
-    if notify.acknowledge
-      begin 
-        if !(params[:payment_status] == 'Completed')
-          Rails.logger.info "PAYPAL_ERROR: transaction did not return 'Completed'"
-        elsif "#{registration.product.price}.00" != params[:mc_gross]
-          Rails.logger.info "PAYPAL_ERROR: registration.product.price:#{registration.product.price} <> mc_gross:#{params[:mc_gross]} returned by paypal"
-        else
-          registration.payment.paypal_txn_id = params[:txn_id]
-          registration.payment.paypal_payment_status = params[:payment_status]
-          registration.payment.paypal_pending_status_reason = params[:pending_reason]
-          registration.payment.amount = params[:mc_gross]
-          registration.payment.online = true
-        end
-      rescue => e
-        Rails.logger.info "PAYPAL_ERROR: an exception was thrown after notify.acknowledge."
-      ensure
-        registration.payment.save
-      end
-    else
-      Rails.logger.info "PAYPAL_ERROR: this transaction was not acknowleged by paypal"
-    end
+    registration.payment.receive_paypal_payment(params, notify)
     
     render :nothing => true
   end

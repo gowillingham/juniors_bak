@@ -9,6 +9,10 @@ INFO_EMAIL_ADDRESS = "lakevillejuniors@gmail.com"
 ADMIN_EMAIL_ADDRESS = "willingham@lakevillejuniors.com"
 OWNER_EMAIL_ADDRESS = "gowillingham@gmail.com"
 
+PAYPAL_COMPLETED = 'Completed'
+PAYPAL_PENDING = 'Pending'
+PAYPAL_FAILED = 'Failed'
+
 APP_ADDRESS = [
   ['21266 Inspiration Path'],
   ['Lakeville, MN 55044']

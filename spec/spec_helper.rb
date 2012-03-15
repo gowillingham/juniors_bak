@@ -6,6 +6,11 @@ require 'rspec/rails'
 # adding sorcery test helpers ..
 include Sorcery::TestHelpers::Rails
 
+# set rails logger to be available from tests ..
+def logger
+  Rails.logger
+end
+
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
