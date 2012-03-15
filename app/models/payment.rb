@@ -17,6 +17,11 @@ class Payment < ActiveRecord::Base
             :paypal_txn_id => params_hash[:txn_id],
             :paypal_payment_status => params_hash[:payment_status],
             :paypal_pending_status_reason => params_hash[:pending_reason],
+            :paypal_txn_type => params_hash[:txn_type],
+            :paypal_payment_type => params_hash[:payment_type],
+            :paypal_verify_sign => params_hash[:verify_sign],
+            :paypal_payer_status => params_hash[:payer_status],
+            :paypal_mc_fee => params_hash[:mc_fee],
             :amount => params_hash[:mc_gross],
             :online => true
           )
