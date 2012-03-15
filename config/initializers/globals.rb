@@ -13,10 +13,10 @@ PAYPAL_COMPLETED = 'Completed'
 PAYPAL_PENDING = 'Pending'
 PAYPAL_FAILED = 'Failed'
 
-APP_ADDRESS = [
-  ['21266 Inspiration Path'],
-  ['Lakeville, MN 55044']
-]
+APP_ADDRESS = {
+  :street => '21266 Inspiration Path',
+  :city_state_zip => 'Lakeville, MN 55044'
+}
 APP_PHONE = '952-431-6341'
 
 SCHOOL_OPTIONS = [

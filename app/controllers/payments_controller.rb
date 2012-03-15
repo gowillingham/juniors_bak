@@ -7,8 +7,11 @@ class PaymentsController < ApplicationController
   
   def ipn   
     registration = Registration.find(params[:item_number])
-    notify = Paypal::Notification.new(request.raw_post)     
-    registration.payment.receive_paypal_payment(params, notify)
+    notify = Paypal::Notification.new(request.raw_post)   
+      
+    if registration.payment.receive_paypal_payment(params, notify)
+      UserMailer.customer_notification_for_registration_payment(registration).deliver
+    end
     
     render :nothing => true
   end

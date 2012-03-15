@@ -50,9 +50,9 @@
       
       <p>
         <%= APP_LONG_NAME %>
-        <br />21266 Inspiration Path
-        <br />Lakeville, MN 55044
-        <br />952-431-6341
+        <br /><%= APP_ADDRESS[:street] %>
+        <br /><%= APP_ADDRESS[:city_state_zip] %>
+        <br /><%= APP_PHONE %>
       </p>
       <p>
         <a href="mailto:<%= INFO_EMAIL_ADDRESS %>"><%= INFO_EMAIL_ADDRESS %></a>        

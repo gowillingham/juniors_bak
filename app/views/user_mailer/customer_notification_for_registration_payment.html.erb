@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <table width="100%"><tr><td>
+      <p>Hello <%= "#{@registration.parent_first_name} #{@registration.parent_last_name}" %></p>
+      <p>
+        Thank you for your registration for the <%= @registration.product.name %>.
+        You will receive additional information regarding session times and team assignments as the league start date approaches.
+        If you have any further questions about your registration or payment, reply to this email or send them to
+        <a href="mailto:<%= INFO_EMAIL_ADDRESS %>"><%= INFO_EMAIL_ADDRESS %></a>.
+      </p>
+      <p>Thanks again, and see you at volleyball!</p>
+      <p>
+        <%= APP_LONG_NAME %>
+        <br /><%= APP_ADDRESS[:street] %>
+        <br /><%= APP_ADDRESS[:city_state_zip] %>
+        <br /><%= APP_PHONE %>
+      </p>
+      <p>
+        <a href="mailto:<%= INFO_EMAIL_ADDRESS %>"><%= INFO_EMAIL_ADDRESS %></a>        
+        <br /><a href="http://<%= APP_HOST_NAME %>/" http://<%= APP_HOST_NAME %>/</a>        
+      </p>      
+    </td></tr></table>
+  </body>
+</html>

@@ -5,6 +5,7 @@ class Payment < ActiveRecord::Base
   
   def receive_paypal_payment(params_hash, notify)
     registration = Registration.find(registration_id)
+    received = false
     
     if notify.acknowledge
       begin 
@@ -26,6 +27,8 @@ class Payment < ActiveRecord::Base
             :online => true
           )
           Rails.logger.info "PAYPAL_TXN: Accepted payment #{amount} for registration_id #{registration_id}"
+          
+          received = true
         end
       rescue => e
         Rails.logger.info "PAYPAL_TXN: A problem in notify.acknowledge block"
@@ -35,6 +38,8 @@ class Payment < ActiveRecord::Base
     else
       Rails.logger.info "PAYPAL_TXN: this transaction was not acknowleged by paypal"
     end
+    
+    return received
   end
   
   def paid?
