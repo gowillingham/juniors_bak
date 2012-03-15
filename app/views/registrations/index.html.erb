@@ -14,7 +14,7 @@
 	<% @registrations.each do |registration| %>
 		<tr>
 			<td><%= link_to "#{registration.last_name}, #{registration.first_name}", registration_path(registration) %></td>
-			<td><%= registration.payment.amount unless registration.payment.nil? %></td>
+			<td><%= registration.payment.paid? %></td>
 			<td><%= registration.product.id %></td>
 			<td class="actions">
 				<%= link_to 'Edit', edit_registration_path(registration) %>
