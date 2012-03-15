@@ -1,0 +1,52 @@
+Hello <%= "#{@registration.parent_first_name} #{@registration.parent_last_name}" %>
+
+Thank you for your registration for the <%= "#{APP_SHORT_NAME} #{@registration.product.name}" %> league. This email is to confirm registration for <%= @registration.first_name + ' ' + @registration.last_name %>. Please check over the registration details below to make sure they are correct. If there is an error, you may reply to this message with any changes you would like to make.
+
+This message is to confirm your registration only. You should receive separate confirmation of your online payment (by credit card or paypal). Your registration information is below.
+
+Session:
+--------
+<%= @registration.product.name %>
+
+Player:
+-------
+<%= @registration.first_name + ' ' + @registration.last_name %>
+
+Mailing address:
+---------------
+<%= @registration.address %>
+<%= @registration.city + ', ' + @registration.state + ' ' + @registration.zip %>
+
+Phone: 
+------
+<%= @registration.phone %>
+
+Email:
+------
+<%= @registration.email %>
+
+School (Grade):
+---------------
+<%= @registration.school %> (<%= @registration.grade %>)
+
+Tshirt:
+-------
+<%= @registration.tshirt_size %>
+
+Note for this registration:
+---------------------------
+<%= @registration.note %>
+
+<% if @registration.parent_helper? %>
+We have noted your willingness to help with a team and will contact you with more information - thanks!
+<% end %>
+
+You will receive more information regarding your team assignment as the league start date approaches. If you have any questions about this registration, reply to this email or send them to mailto:<%= INFO_EMAIL_ADDRESS %>"><%= INFO_EMAIL_ADDRESS %>. Thanks, and see you at volleyball!
+
+<%= APP_LONG_NAME %>
+21266 Inspiration Path
+Lakeville, MN 55044
+952-431-6341
+
+mailto:<%= INFO_EMAIL_ADDRESS %>"      
+http://<%= APP_HOST_NAME %>/       
