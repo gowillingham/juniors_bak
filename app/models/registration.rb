@@ -7,12 +7,7 @@ class Registration < ActiveRecord::Base
   validates :last_name, :presence => true
   validates :parent_first_name, :presence => true
   validates :parent_last_name, :presence => true
-  validates :address, :presence => true
-  validates :city, :presence => true
-  validates :state, :presence => true
-  validates :zip, 
-    :presence => true,
-    :format => { :with => %r{\d{5}(-\d{4})?} }
+  validates :zip, :format => { :with => %r{\d{5}(-\d{4})?} }
 
   validates :school, :presence => true
   validates :grade, 

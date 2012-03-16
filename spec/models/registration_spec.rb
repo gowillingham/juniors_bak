@@ -59,13 +59,6 @@ describe Registration do
       Registration.new(@attr.merge(:email => 'email')).should_not be_valid
     end
     
-    it "shoud require a street address" do
-      Registration.new(@attr.merge(:address => '')).should_not be_valid
-      Registration.new(@attr.merge(:city => '')).should_not be_valid
-      Registration.new(@attr.merge(:state => '')).should_not be_valid
-      Registration.new(@attr.merge(:zip => '')).should_not be_valid
-    end
-    
     it "should require a valid phone number" do 
       Registration.new(@attr.merge(:phone => '')).should_not be_valid
       Registration.new(@attr.merge(:phone => '999')).should_not be_valid
