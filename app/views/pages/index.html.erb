@@ -1,1 +1,65 @@
 <h1>What's New at <%= APP_LONG_NAME %>!</h1>
+
+<h2>Links to summer volleyball camps!</h2>
+<ul>
+  <li><%= link_to "Concordia university camp (grade 3-8)", "/concordia_camp.pdf" %></li>
+  <li><%= link_to "Lakeville north high school camp (grade 3-12)", "/north_camp.pdf" %></li>
+  <li><%= link_to "Lakeville south high school camp (grade 4-12)", "/south_camp.pdf" %></li>
+</ul>
+
+<!--<h2>Upcoming spring 2011 in-house volleyball league!!</h2>-->
+<!--<p>-->
+<!--  Please plan to be a part of our spring 2011 in-house volleyball league for girls grade 1-5. -->
+<!--  The league will run on five Saturday mornings beginning in April 2011. -->
+<!--  Dates are not yet scheduled. -->
+<!--  You can check this website in February/March for specific league dates and registration information. -->
+<!--  See you this spring!-->
+<!--</p>-->
+
+<h2>Register for Spring 2012 Girls Volleyball League!</h2>
+<p>
+  Registration is now being accepted for the Spring 2011 session of in-house volleyball.
+  In-house volleyball offers volleyball instruction and play for girls in grades 1-6.
+  Sessions will be held on five Saturday mornings beginning in April (see below).
+  Cost is $65 per player, with all sessions being held at Lakeville South HS (21135 Jacquard Ave, Lakeville).
+  You may register now by visiting our <%= link_to "online registration", new_registration_path %>.
+</p>
+<p>
+  Prefer to complete and mail a paper (.pdf) registration?
+  Download it <%= link_to "here", "/inhouse_flyer.pdf" %>.
+</p>
+
+<h2>Spring 2012 In-house volleyball session dates/times</h2>
+
+<table class="schedule">
+  <thead>
+    <tr><th>Date</th><th>Beginner</th><th>Intermediate</th><th>Site</th><th></th></tr>
+  </thead>
+  <tbody>
+  <% INHOUSE_LEAGUE_SESSION_GRID.each do |row| %>
+    <tr>
+      <td class="emphasize"><%= row[0].to_s %></td>
+      <td><%= row[1].to_s %></td>
+      <td><%= row[2].to_s %></td>
+      <td><%= row[3].to_s %></td>
+      <td class="emphasize"><%= row[4].to_s %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<p> 
+  Please <%= mail_to INFO_EMAIL_ADDRESS, "drop us a note" %> with any questions about
+  volleyball for girls grade 1-6!
+</p>
+
+<!--<p>-->
+<!--  Please plan to be a part of our fall 2010 in-house volleyball league for girls grade 1-5. -->
+<!--  The league will run on five Saturday mornings beginning September 2010. -->
+<!--  Dates are not yet scheduled. -->
+<!--  You can check this website in late July for specific league dates and registration information. -->
+<!--  See you this fall!-->
+<!--</p>-->
+<!---->
+
+

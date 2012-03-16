@@ -1,5 +1,16 @@
 INHOUSE_LEAGUE_FIRST_SESSION_DATE = '2012-04-14'.to_date
 
+INHOUSE_LEAGUE_SESSION_GRID = [
+  ["Sat, Apr 18", "8:30-10:00a", "10:30-12:00p", "Lakeville South HS", ""],
+  ["Sat, May 7", "8:30-10:00a", "10:30-12:00p", "Lakeville South HS", "Picture day!"],
+  ["Sat, May 14", "8:30-10:00a", "10:30-12:00p", "Lakeville South HS", ""],
+  ["Sat, May 21", "8:30-10:00a", "10:30-12:00p", "Lakeville South HS", ""],
+  ["Sat, Jun 4", "8:30-10:00a", "10:30-12:00p", "Lakeville South HS", "Tournament!"],
+]
+
+
+
+
 APP_LONG_NAME = "Lakeville Junior Volleyball"
 APP_SHORT_NAME = "Lakeville Juniors"
 APP_HOST_NAME = "lakevillejuniors.com"
