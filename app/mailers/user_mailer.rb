@@ -13,4 +13,11 @@ class UserMailer < ActionMailer::Base
     
     mail :to => registration.email, :subject => subject
   end
+  
+  def admin_notification_for_registration(registration)
+    @registration = registration
+    subject = "[#{APP_SHORT_NAME}] **Registration confirm::##{registration.id}::#{registration.first_name} #{registration.last_name}**"
+    
+    mail :to => REPORT_TO_EMAIL_LIST, :subject => subject
+  end
 end

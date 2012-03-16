@@ -51,6 +51,7 @@ class RegistrationsController < ApplicationController
   def confirm
     @registration = Registration.find(params[:id])
     UserMailer.customer_notification_for_registration(@registration).deliver
+    UserMailer.admin_notification_for_registration(@registration).deliver
     flash[:success] = "Ok! Registration email sent [debug]"
     redirect_to registrations_path
   end

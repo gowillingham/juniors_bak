@@ -42,7 +42,9 @@
       <%#= league_when_and_where_grid.html_safe %>
       
       <p>
-        You will receive more information regarding your team assignment as the league start date approaches.
+				The first date for volleyball is <%= INHOUSE_LEAGUE_FIRST_SESSION_DATE.strftime("%A %B %e, %Y") %>.
+        You should expect to receive more information regarding your team assignment 
+				following our registration deadline (<%= INHOUSE_LEAGUE_FIRST_SESSION_DATE.advance(:days => -6).strftime("%B %e") %>).
         If you have any questions about this registration, reply to this email or send them to
         <a href="mailto:<%= INFO_EMAIL_ADDRESS %>"><%= INFO_EMAIL_ADDRESS %></a>.
         Thanks, and see you at volleyball!

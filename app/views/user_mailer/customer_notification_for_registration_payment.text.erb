@@ -1,6 +1,6 @@
 Hello <%= "#{@registration.parent_first_name} #{@registration.parent_last_name}" %>
 
-Thank you for your registration for <%= @registration.product.name %>. This message is to confirm that we have received your online payment and you are all set for this upcoming league session. You will receive additional information regarding session times and team assignments as the league start date approaches. If you have any further questions about your registration or payment, reply to this email or send them to mailto:<%= INFO_EMAIL_ADDRESS %>.
+Thank you for your registration for <%= @registration.product.name %>. This message is to confirm that we have received your online payment and you are all set for this upcoming league session. You should expect to receive more information regarding your team assignment following our registration deadline (<%= INHOUSE_LEAGUE_FIRST_SESSION_DATE.advance(:days => -6).strftime("%B %e") %>). If you have any further questions about your registration or payment, reply to this email or send them to mailto:<%= INFO_EMAIL_ADDRESS %>.
 
 Thanks again, and see you at volleyball!</p>
 

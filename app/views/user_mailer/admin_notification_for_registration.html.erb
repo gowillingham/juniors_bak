@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <table width="100%"><tr><td>
+
+			<table>
+				<tbody>
+					<tr>
+						<td>Timestamp: </td>
+						<td><%= @registration.created_at %></td>
+					</tr>
+					<tr>
+						<td>Player: </td>
+						<td><%= "#{@registration.last_name}, #{@registration.first_name}" %></td>
+					</tr>
+					<tr>
+						<td>Parent: </td>
+						<td><%= "#{@registration.parent_last_name}, #{@registration.parent_first_name}" %></td>
+					</tr>
+					<tr>
+						<td>Email: </td>
+						<td><%= @registration.email %></td>
+					</tr>
+					<tr>
+						<td>School: </td>
+						<td><%= @registration.school %></td>
+					</tr>
+					<tr>
+						<td>Grade: </td>
+						<td><%= @registration.grade %></td>
+					</tr>
+					<tr>
+						<td>Session: </td>
+						<td><%= @registration.product.name %></td>
+					</tr>
+				</tbody>
+			</table>
+	
+    </td></tr></table>
+  </body>
+</html>

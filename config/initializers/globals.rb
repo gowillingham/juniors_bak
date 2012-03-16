@@ -1,5 +1,4 @@
-INHOUSE_LEAGUE_FIRST_SESSION_DATE = '2012-09-29'.to_date
-INHOUSE_LEAGUE_ENTRY_DEADLINE_DATE = '2011-09-23'.to_date
+INHOUSE_LEAGUE_FIRST_SESSION_DATE = '2012-04-14'.to_date
 
 APP_LONG_NAME = "Lakeville Junior Volleyball"
 APP_SHORT_NAME = "Lakeville Juniors"
@@ -8,6 +7,7 @@ APP_HOST_NAME = "lakevillejuniors.com"
 INFO_EMAIL_ADDRESS = "lakevillejuniors@gmail.com"
 ADMIN_EMAIL_ADDRESS = "willingham@lakevillejuniors.com"
 OWNER_EMAIL_ADDRESS = "gowillingham@gmail.com"
+REPORT_TO_EMAIL_LIST = ['willingham@lakevillejuniors.com', 'info@lakevillejuniors.com']
 
 PAYPAL_COMPLETED = 'Completed'
 PAYPAL_PENDING = 'Pending'
