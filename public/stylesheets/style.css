@@ -53,7 +53,7 @@ div.paypal table td.price				{color:red;font-weight:bold;}
 #wrapper		{background-color:#fff !important;background:#fbf9f4 url('../images/aside.gif') repeat-y 100% 0;}
 #content		{padding:1em;}
 #aside			{padding:.5em;}
-#footer			{background-color:#fff;}
+#footer div	{background-color:#ddd;text-align:center;padding:5px;}
 
 div.field_with_errors input 			{border-color:red;}
 div.field_with_errors select 			{border-color:red;}

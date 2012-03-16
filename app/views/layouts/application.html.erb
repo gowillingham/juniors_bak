@@ -46,7 +46,9 @@
 				</div>
 			</div>
 		</div>
-		<div id="footer" class="span-24 last clear">footer</div>
+		<div id="footer" class="span-24 last clear">
+			<div>Copyright - <%= Date.today.year.to_s + " " + APP_LONG_NAME %></div>
+		</div>
   </div>
   <% if Rails.env.development? %>
 		<div class='debug'>

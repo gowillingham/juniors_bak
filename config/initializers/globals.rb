@@ -4,7 +4,7 @@ APP_LONG_NAME = "Lakeville Junior Volleyball"
 APP_SHORT_NAME = "Lakeville Juniors"
 APP_HOST_NAME = "lakevillejuniors.com"
 
-INFO_EMAIL_ADDRESS = "lakevillejuniors@gmail.com"
+INFO_EMAIL_ADDRESS = "info@lakevillejuniors.com"
 ADMIN_EMAIL_ADDRESS = "willingham@lakevillejuniors.com"
 OWNER_EMAIL_ADDRESS = "gowillingham@gmail.com"
 REPORT_TO_EMAIL_LIST = ['willingham@lakevillejuniors.com', 'info@lakevillejuniors.com']
