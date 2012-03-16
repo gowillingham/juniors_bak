@@ -1,5 +1,9 @@
 class PagesController < ApplicationController
   
+  def datatable
+    render :layout => 'application_popout'
+  end
+  
   def index
     render 'index'
   end

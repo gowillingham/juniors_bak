@@ -14,12 +14,12 @@ Juniors::Application.routes.draw do
   end
   
   post 'payments/ipn', :to => 'payments#ipn'
-  get 'payments/test', :to => 'payments#test'
 
   get 'pages/index'
   get 'pages/about'
   get 'pages/privacy'
   get 'pages/contact'
+  get 'pages/datatable'
   
   root :to => 'pages#index'
   

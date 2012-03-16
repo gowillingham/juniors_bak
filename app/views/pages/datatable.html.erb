@@ -1,0 +1,51 @@
+<div style="overflow:auto;scrollbar:horizontal;">
+	
+<p>
+	<%= link_to 'Back to registrations', registrations_path %>
+</p>
+<table class="datatable">
+	<thead>
+		<tr>
+			<th>id#</th>
+			<th>first_name</th>
+			<th>last_name</th>
+			<th>parent_first_name</th>
+			<th>parent_last_name</th>
+			<th>email</th>
+			<th>phone</th>
+			<th>address</th>
+			<th>city</th>
+			<th>state</th>
+			<th>zip</th>
+			<th>grade</th>
+			<th>tshirt_size</th>
+			<th>parent_helper</th>
+			<th>parent_tshirt_size</th>
+			<th>session</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% Registration.all.each do |r| %>
+			<tr>
+				<td><%= r.id %></td>
+				<td><%= r.first_name %></td>
+				<td><%= r.last_name %></td>
+				<td><%= r.parent_first_name %></td>
+				<td><%= r.parent_last_name %></td>
+				<td><%= r.email %></td>
+				<td><%= r.phone %></td>
+				<td><%= r.address %></td>
+				<td><%= r.city %></td>
+				<td><%= r.state %></td>
+				<td><%= r.zip %></td>
+				<td><%= r.grade %></td>
+				<td><%= r.tshirt_size %></td>
+				<td><%= r.parent_helper %></td>
+				<td><%= r.parent_tshirt_size %></td>
+				<td><%= r.product.id %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
+
+</div>

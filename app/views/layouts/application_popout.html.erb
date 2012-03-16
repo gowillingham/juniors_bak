@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Lakeville junior volleyball</title>
+  <%= stylesheet_link_tag 'blueprint/screen', :media => 'screen' %>
+  <%= stylesheet_link_tag 'blueprint/print',  :media => 'print' %>
+  <%= stylesheet_link_tag 'style',  :media => 'screen' %>
+  <!--[if IE]><link rel="stylesheet" href="blueprint/ie.css" type="text/css" media="screen, projection" /><![endif]-->  
+  <%= javascript_include_tag 'jquery.min', 'rails' %>
+  <%= csrf_meta_tag %>
+</head>
+<body class="<%= "#{controller.controller_name} #{controller.action_name}" %>" style="background:none;">
+  <div>
+					<%= yield %>
+  </div>
+  <% if Rails.env.development? %>
+		<div class='debug'>
+	    <div class="span-24"><%= debug(params) %></div>
+	    <div class="span-24"><%= debug(session) %></div>
+		</div>
+  <% end %>
+</body>
+</html>
