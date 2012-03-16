@@ -7,10 +7,10 @@
 	<thead>
 		<tr>
 			<th>id#</th>
-			<th>first_name</th>
 			<th>last_name</th>
-			<th>parent_first_name</th>
+			<th>first_name</th>
 			<th>parent_last_name</th>
+			<th>parent_first_name</th>
 			<th>email</th>
 			<th>phone</th>
 			<th>address</th>
@@ -22,16 +22,21 @@
 			<th>parent_helper</th>
 			<th>parent_tshirt_size</th>
 			<th>session</th>
+			<th>scholarship</th>
+			<th>price</th>
+			<th>amount</th>
+			<th>online</th>
+			<th>note</th>
 		</tr>
 	</thead>
 	<tbody>
 		<% Registration.all.each do |r| %>
 			<tr>
 				<td><%= r.id %></td>
-				<td><%= r.first_name %></td>
 				<td><%= r.last_name %></td>
-				<td><%= r.parent_first_name %></td>
+				<td><%= r.first_name %></td>
 				<td><%= r.parent_last_name %></td>
+				<td><%= r.parent_first_name %></td>
 				<td><%= r.email %></td>
 				<td><%= r.phone %></td>
 				<td><%= r.address %></td>
@@ -43,6 +48,11 @@
 				<td><%= r.parent_helper %></td>
 				<td><%= r.parent_tshirt_size %></td>
 				<td><%= r.product.id %></td>
+				<td><%= r.payment.scholarship %></td>
+				<td><%= r.product.price %></td>
+				<td><%= r.payment.amount %></td>
+				<td><%= r.payment.online %></td>
+				<td><%= r.note %></td>
 			</tr>
 		<% end %>
 	</tbody>

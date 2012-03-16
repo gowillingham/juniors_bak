@@ -11,8 +11,10 @@ strong                    {font-weight:bold;}
 .shadow       {-moz-box-shadow: 3px 3px 4px #999;-webkit-box-shadow: 3px 3px 4px #999;box-shadow: 3px 3px 4px #999;}
 
 table.first_column_fixed tr td:first-child			{width:1%;white-space:nowrap;font-weight:bold;}
-table.datatable	td															{white-space:nowrap;}
-
+table.datatable																	{border-collapse:collapse;}
+table.datatable	td,
+table.datatable th															{white-space:nowrap;font-size:0.8em;padding:1px 2px;border:solid 1px #eee;border-collapse:collapse;border-top:none;border-bottom:none;}
+table.datatable th															{border:none;}
 div.field	label																	{display:block;font-size:0.9em;}
 div.field	input																	{}
 div.field input[type='text'],
