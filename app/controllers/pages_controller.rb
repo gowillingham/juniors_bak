@@ -1,4 +1,5 @@
 class PagesController < ApplicationController
+  before_filter :require_login, :only => [:datatable]
   
   def datatable
     render :layout => 'application_popout'

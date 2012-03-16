@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120315150904) do
+ActiveRecord::Schema.define(:version => 20120316171625) do
 
   create_table "payments", :force => true do |t|
     t.integer  "registration_id"
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(:version => 20120315150904) do
     t.boolean  "enabled",     :default => true
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "session"
   end
 
   create_table "registrations", :force => true do |t|

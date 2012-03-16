@@ -9,6 +9,7 @@
 				<th>Product</th>
 				<th>Description</th>
 				<th>Price</th>
+				<th>Session</th>
 				<th>Enabled?</th>
 				<th></th>
 			</tr>
@@ -19,6 +20,7 @@
 					<td><%= link_to p.name, product_path(p) %></td>
 					<td><%= p.description %></td>
 					<td><%= p.price %></td>
+					<td><%= p.session %></td>
 					<td><%= p.enabled %></td>
 					<td class="actions">
 						<%= link_to 'Change', edit_product_path(p) %>
