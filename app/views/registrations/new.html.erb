@@ -1,5 +1,11 @@
-<h1>New registration</h1>
-
+<div class="info paypal round">
+	<%= image_tag 'paypal_verified.png', :class => :image, :width => '80px' %>
+	<h3>Thanks for your interest in <%= APP_SHORT_NAME %>!</h3>
+	<div class="legend">
+		We'll need the following information for your registration. 
+		You can use a credit card (or your Paypal account) to make an online payment.
+	</div>
+</div>
 <%= form_for @registration do |f| %>
 	<%= render 'shared/errors',  :object => @registration %>
   <fieldset>
@@ -7,7 +13,7 @@
 
 		<div class="field">
 		  <%= f.label :product_id, 'Which session?' %>
-		  <%= f.select :product_id, Product.all.map { |p| [p.name, p.id] }, {:prompt => ''} %>
+		  <%= f.select :product_id, Product.all.map { |p| ["#{p.name} (#{p.session})", p.id] }, {:prompt => ''} %>
 		</div>
 		
 		<div class="field new_section">

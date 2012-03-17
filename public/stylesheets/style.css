@@ -31,7 +31,7 @@ div.field div.tip																{color:#888;font-size:.8em;line-height:0.8em;fo
 div.highlight																		{margin-top:2em;}
 
 div.paypal					 						{margin-bottom:30px;}
-div.paypal img.image 						{width:100px;float:left;}
+div.paypal img.image 						{float:left;}
 div.paypal h3			 							{margin:10px 0;padding-left:110px;}
 div.paypal div.legend			 			{padding-left:110px;}
 div.paypal table					 			{margin:20px 0 0 0;background-color:#eee;border:solid 1px #92CAE4;}
