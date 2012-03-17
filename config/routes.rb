@@ -19,6 +19,7 @@ Juniors::Application.routes.draw do
   get 'pages/about'
   get 'pages/privacy'
   get 'pages/contact'
+  get 'pages/calendar'
   get 'pages/datatable'
   
   root :to => 'pages#index'
