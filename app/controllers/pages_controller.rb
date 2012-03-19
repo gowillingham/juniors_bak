@@ -6,6 +6,10 @@ class PagesController < ApplicationController
   end
   
   def datatable
+    @registrations = Registration.find(
+    :all,
+    :order => [:last_name, :first_name]
+    )
     render :layout => 'application_popout'
   end
   

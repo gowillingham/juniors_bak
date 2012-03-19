@@ -26,7 +26,7 @@
 		</tr>
 	</thead>
 	<tbody>
-		<% Registration.all.each do |r| %>
+		<% @registrations.each do |r| %>
 			<tr>
 				<td><%= r.id %></td>
 				<td><%= r.last_name %></td>
