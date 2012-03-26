@@ -13,7 +13,7 @@
 
 		<div class="field">
 		  <%= f.label :product_id, 'Which session?' %>
-		  <%= f.select :product_id, Product.all.map { |p| ["#{p.name} (#{p.session})", p.id] }, {:prompt => ''} %>
+		  <%= f.select :product_id, Product.find(:all, :conditions => ['category =?', 'inhouse']).map { |p| ["#{p.name} (#{p.session})", p.id] }, {:prompt => ''} %>
 		</div>
 		
 		<div class="field new_section">
