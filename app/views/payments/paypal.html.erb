@@ -6,22 +6,22 @@
     :currency => 'USD', 
 		:service => :paypal do |service|
 	    service.customer :first_name => @registration.first_name,
-	        :last_name => @registration.last_name,
-	        :phone => @registration.phone,
-	        :email => @registration.email
+        :last_name => @registration.last_name,
+        :phone => @registration.phone,
+        :email => @registration.email
 	    service.billing_address :city => @registration.city,
-	        :address1 => @registration.address,
-	        :state => @registration.state,
-	        :country => 'USA',
-	        :zip => @registration.zip
+        :address1 => @registration.address,
+        :state => @registration.state,
+        :country => 'USA',
+        :zip => @registration.zip
 	    service.item_name "#{@registration.product.name} Payment"
 	    service.invoice @registration.id
 	    service.tax '0.00'
 	    service.notify_url url_for(:only_path => false, :controller => 'payments', :action => 'ipn')
 	    service.return_url registration_url(@registration.id)
 	    service.cancel_return_url url_for(:only_path => false,
-	        :controller => 'pages', :action => 'index') %>
-
+        :controller => 'pages', :action => 'index') 
+%>
 
 	<div class="info paypal round">
 		<%= image_tag 'check_icon.png', :class => :image, :width => '100px' %>
